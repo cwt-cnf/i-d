@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-jones-ace-cwt-proof-of-possession-00"
+<rfc category="std" docName="draft-jones-ace-cwt-proof-of-possession-01"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -21,12 +21,79 @@
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization>Microsoft</organization>
       <address>
-        <email>mbj@microsoft.com</email>
-        <uri>http://self-issued.info/</uri>
+	<email>mbj@microsoft.com</email>
+	<uri>http://self-issued.info/</uri>
       </address>
     </author>
 
-    <date day="20" month="April" year="2017"/>
+    <author initials="L." surname="Seitz" fullname="Ludwig Seitz">
+      <organization>RISE SICS</organization>
+      <address>
+	<postal>
+	  <street>Scheelevaegen 17</street>
+	  <city>Lund</city>
+	  <code>223 70</code>
+	  <country>Sweden</country>
+	</postal>
+	<email>ludwig@ri.se</email>
+      </address>
+    </author>
+
+    <author initials="G." surname="Selander" fullname="Göran Selander">
+      <organization>Ericsson AB</organization>
+      <address>
+	<postal>
+	  <street>Färögatan 6</street>
+	  <city>Kista</city>
+	  <code>164 80</code>
+	  <country>Sweden</country>
+	</postal>
+	<email>goran.selander@ericsson.com</email>
+      </address>
+    </author>
+
+    <author initials="E." surname="Wahlström" fullname="Erik Wahlström">
+      <organization></organization>
+      <address>
+	<postal>
+	  <street></street>
+	  <city></city>
+	  <code></code>
+	  <country>Sweden</country>
+	</postal>
+	<phone></phone>
+	<email>erik@wahlstromstekniska.se</email>
+      </address>
+    </author>
+
+    <author fullname="Samuel Erdtman" initials="S.E." surname="Erdtman">
+      <organization>Spotify AB</organization>
+      <address>
+      	<postal>
+      	  <street>Birger Jarlsgatan 61, 4tr</street>
+      	  <city>Stockholm</city>
+      	  <region></region>
+      	  <code>113 56</code>
+      	  <country>Sweden</country>
+      	</postal>
+      	<phone>+46702691499</phone>
+      	<email>erdtman@spotify.com</email>
+      </address>
+    </author>
+
+    <author fullname="Hannes Tschofenig" initials="H." surname="Tschofenig">
+      <organization>ARM Ltd.</organization>
+      <address>
+	<postal>
+	  <street></street>
+	  <code>6060</code> <city>Hall in Tirol</city>
+	  <country>Austria</country>
+	</postal>
+	<email>Hannes.Tschofenig@arm.com</email>
+      </address>
+    </author>
+
+    <date day="30" month="June" year="2017"/>
 
     <area>Security</area>
     <workgroup>ACE Working Group</workgroup>
@@ -39,12 +106,11 @@
     <abstract>
       <t>
         This specification describes how to declare in a CBOR Web Token (CWT)
-	that the presenter of the CWT possesses a particular proof-of-possession key
-	and how the recipient can cryptographically confirm
-	proof of possession of the key by the presenter.
+	that the presenter of the CWT possesses a particular proof-of-possession key.
 	Being able to prove possession of a key is also sometimes described as
 	the presenter being a holder-of-key.
-	This specification is a profile of "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" (RFC 7800),
+	This specification provides equivalent functionality to
+	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" (RFC 7800),
 	but using CBOR and CWTs rather than JSON and JWTs.
       </t>
     </abstract>
@@ -55,12 +121,11 @@
     <section title="Introduction" anchor="Introduction">
       <t>
         This specification describes how a CBOR Web Token <xref target="CWT"/> can declare
-	that the presenter of the CWT possesses a particular proof-of-possession (PoP) key
-	and how the recipient can cryptographically confirm
-	proof of possession of the key by the presenter.
+	that the presenter of the CWT possesses a particular proof-of-possession (PoP) key.
 	Proof of possession of a key is also sometimes described as
 	the presenter being a holder-of-key.
-	This specification is a profile of "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
+	This specification provides equivalent functionality to
+	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
 	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="CWT"/>
 	rather than JSON <xref target="RFC7159"/> and JWTs <xref target="JWT"/>.
      </t>
@@ -119,8 +184,8 @@
 	the issuer of the CWT declares that the presenter possesses a particular key
 	and that the recipient can cryptographically confirm that
 	the presenter has possession of that key.
-	The value of the <spanx style="verb">cnf</spanx> claim is a JSON object
-	and the members of that object identify the proof-of-possession key.
+	The value of the <spanx style="verb">cnf</spanx> claim is a CBOR map
+	and the members of that map identify the proof-of-possession key.
       </t>
       <t>
 	The presenter can be identified in one of several ways by the CWT
@@ -135,15 +200,15 @@
 	The case in which the presenter is the subject of the CWT is analogous to
 	Security Assertion Markup Language (SAML) 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation usage.
 	At least one of the <spanx style="verb">sub</spanx> and <spanx style="verb">iss</spanx>
-	claims MUST be present in the CWT.
-	Some use cases may require that both be present.
+	claims is typically present in the CWT and 
+	some use cases may require that both be present.
       </t>
 
       <section title="Confirmation Claim" anchor="Confirmation">
 	<t>
 	  The <spanx style="verb">cnf</spanx> claim is used in the CWT
 	  to contain members used to identify the proof-of-possession key.
-	  Other members of the <spanx style="verb">cnf</spanx> object may be defined because
+	  Other members of the <spanx style="verb">cnf</spanx> map may be defined because
 	  a proof-of-possession key may not be the only means of confirming
 	  the authenticity of the token.
 	  This is analogous to the SAML 2.0 <xref target="OASIS.saml-core-2.0-os"/>
@@ -195,7 +260,7 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="I-D.ietf-cose-msg"/>
 	  representing the corresponding asymmetric public key.
-	  The following example demonstrates such a declaration
+	  The following example (using JSON notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -242,7 +307,7 @@
 	  using COSE_Encrypt or COSE_Encrypt0.
 	</t>
 	<t>
-	  The following example illustrates a symmetric key that could subsequently be
+	  The following example (using JSON notation) illustrates a symmetric key that could subsequently be
 	  encrypted for use in the <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
 	<figure>
@@ -261,7 +326,7 @@
 	  using the AES-CCM-16-64-128 algorithm.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT illustrates
+	  The following example CWT Claims Set of a CWT (using JSON notation) illustrates
 	  the use of an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
@@ -295,12 +360,12 @@
 	  and that the recipient can cryptographically confirm
 	  proof of possession of the key by the presenter by including a
 	  <spanx style="verb">cnf</spanx> claim in the CWT
-	  whose value is a JSON object with the JSON object containing a
+	  whose value is a CBOR map with the CBOR map containing a
 	  <spanx style="verb">kid</spanx> member
 	  identifying the key.
 	</t>
 	<t>
-	  The following example demonstrates such a declaration
+	  The following example (using JSON notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -345,7 +410,7 @@
 	  Section 6 of <xref target="RFC6125">RFC 6125</xref>.
 	</t>
 	<t>
-	  The following example demonstrates such a declaration
+	  The following example (using JSON notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -484,7 +549,7 @@
 
       <section anchor="ClaimsRegistry" title="CBOR Web Token Claims Registration">
 	<t>
-	  This specification registers the  <spanx style="verb">cnf</spanx> claim in the IANA
+	  This specification registers the <spanx style="verb">cnf</spanx> claim in the IANA
 	  "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>
 	  established by <xref target="CWT"/>.
 	</t>
@@ -499,9 +564,15 @@
 	      <t>
 		Claim Description: Confirmation
 	      </t>
-	      <t>JWT Claim Name: <spanx style="verb">cnf</spanx></t>
-	      <t>CBOR Key Value: TBD (maybe 8)</t>
-	      <t>CBOR Major Type: 5</t>
+	      <t>
+		JWT Claim Name: <spanx style="verb">cnf</spanx>
+	      </t>
+	      <t>
+		Claim Key: TBD (maybe 8)
+	      </t>
+	      <t>
+		Claim Value Type(s): map
+	      </t>
 	      <t>
 		Change Controller: IESG
 	      </t>
@@ -534,7 +605,7 @@
                 <vspace/>
                 Brief description of the confirmation method (e.g., "Key Identifier").
               </t>
-	      <t hangText='JWT Conformation Method Name:'>
+	      <t hangText='JWT Confirmation Method Name:'>
 		<vspace/>
 		Claim Name of the equivalent JWT confirmation method value,
 		as registered in <xref target="IANA.JWT.Claims"/>.
@@ -543,14 +614,13 @@
 		the Designated Experts can choose to accept registrations
 		for which the JWT Claim Name is listed as "N/A".
 	      </t>
-	      <t hangText='CBOR Key Value:'>
+	      <t hangText='Confirmation Key:'>
 		<vspace/>
-		Key value for the confirmation method.
-		The key value MUST be an integer in the range of 1 to 65536.
+		CBOR map key value for the confirmation method.
 	      </t>
-	      <t hangText='CBOR Major Type:'>
+	      <t hangText='Confirmation Value Type(s):'>
 		<vspace/>
-		CBOR major type and, when applicable, minor type for the claim.
+		CBOR types that can be used for the confirmation method value.
 	      </t>
               <t hangText='Change Controller:'>
                 <vspace/>
@@ -583,10 +653,10 @@
 		JWT Confirmation Method Name: <spanx style="verb">jwk</spanx>
 	      </t>
 	      <t>
-		CBOR Key Value: 1
+		Confirmation Key: 1
 	      </t>
 	      <t>
-		CBOR Major Type: 5
+		Confirmation Value Type(s): map
 	      </t>
               <t>
                 Change Controller: IESG
@@ -608,10 +678,10 @@
 		JWT Confirmation Method Name: <spanx style="verb">jwe</spanx>
 	      </t>
 	      <t>
-		CBOR Key Value: 2
+		Confirmation Key: 2
 	      </t>
 	      <t>
-		CBOR Major Type: 4 (with an optional 6 tag prefix)
+		Confirmation Value Type(s): array (with an optional COSE_Encrypt or COSE_Encrypt0 tag)
 	      </t>
               <t>
                 Change Controller: IESG
@@ -633,10 +703,10 @@
 		JWT Confirmation Method Name: <spanx style="verb">kid</spanx>
 	      </t>
 	      <t>
-		CBOR Key Value: 3
+		Confirmation Key: 3
 	      </t>
 	      <t>
-		CBOR Major Type: 2
+		Confirmation Value Type(s): binary string
 	      </t>
               <t>
                 Change Controller: IESG
@@ -659,10 +729,10 @@
 		JWT Confirmation Method Name: <spanx style="verb">jku</spanx>
 	      </t>
 	      <t>
-		CBOR Key Value: TBD
+		Confirmation Key: TBD
 	      </t>
 	      <t>
-		CBOR Major Type: 3
+		Confirmation Value Type(s): text string
 	      </t>
               <t>
                 Change Controller: IESG
@@ -693,7 +763,7 @@
 
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-cose-msg-24"?>
 
-      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-04">
+      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-06">
 	<front>
 	  <title abbrev="CBOR Web Token">CBOR Web Token (CWT)</title>
 
@@ -726,9 +796,9 @@
 	    </address>
 	  </author>
 
-	  <date day="13" month="April" year="2017" />
+	  <date day="29" month="June" year="2017" />
 	</front>
-	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-04"/>
+	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-06"/>
       </reference>
 
       <reference anchor="IANA.CWT.Claims" target="http://www.iana.org/assignments/cwt">
@@ -825,7 +895,9 @@
 
     <section title='Acknowledgements' anchor='Acknowledgements' numbered="no">
       <t>
-	TBD
+	Thanks to the following people for their reviews of the specification:
+	Michael Richardson and
+	Jim Schaad.
       </t>
     </section>
 
@@ -845,12 +917,27 @@
       </t>
 
       <t>
-        -00
-        <list style='symbols'>
-          <t>
-            Created the initial draft from RFC 7800.
+	-01
+	<list style='symbols'>
+	  <t>
+	    Tracked CBOR Web Token (CWT) Claims Registry updates.
+	  </t>
+	  <t>
+	    Addressed review comments by Michael Richardson and Jim Schaad.
+	  </t>
+	  <t>
+	    Added co-authors.
 	  </t>
         </list>
+      </t>
+
+      <t>
+	-00
+	<list style='symbols'>
+	  <t>
+	    Created the initial draft from RFC 7800.
+	  </t>
+	</list>
       </t>
 
     </section>     
