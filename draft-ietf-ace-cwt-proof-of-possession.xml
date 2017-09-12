@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-jones-ace-cwt-proof-of-possession-01"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-00"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -93,7 +93,7 @@
       </address>
     </author>
 
-    <date day="30" month="June" year="2017"/>
+    <date day="17" month="July" year="2017"/>
 
     <area>Security</area>
     <workgroup>ACE Working Group</workgroup>
@@ -146,7 +146,7 @@
       <t>
 	This specification uses terms defined in
 	the CBOR Web Token <xref target="CWT"/>,
-	<xref target="I-D.ietf-cose-msg"/>, and
+	CBOR Object Signing and Encryption (COSE) <xref target="RFC8152"/>, and
 	Concise Binary Object Representation (CBOR) <xref target="RFC7049"/>
 	specifications.
       </t>
@@ -258,7 +258,7 @@
 	<t>
 	  When the key held by the presenter is an asymmetric private key,
 	  the <spanx style="verb">COSE_Key</spanx> member
-	  is a COSE_Key <xref target="I-D.ietf-cose-msg"/>
+	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
 	  The following example (using JSON notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
@@ -301,7 +301,7 @@
 	<t>
 	  When the key held by the presenter is a symmetric key,
 	  the <spanx style="verb">Encrypted_COSE_Key</spanx> member
-	  is an encrypted COSE_Key <xref target="I-D.ietf-cose-msg"/>
+	  is an encrypted COSE_Key <xref target="RFC8152"/>
 	  representing the symmetric key
 	  encrypted to a key known to the recipient
 	  using COSE_Encrypt or COSE_Encrypt0.
@@ -760,10 +760,9 @@
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5246.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6125.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7049.xml' ?>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
 
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-cose-msg-24"?>
-
-      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-06">
+      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-07">
 	<front>
 	  <title abbrev="CBOR Web Token">CBOR Web Token (CWT)</title>
 
@@ -798,7 +797,7 @@
 
 	  <date day="29" month="June" year="2017" />
 	</front>
-	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-06"/>
+	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-07"/>
       </reference>
 
       <reference anchor="IANA.CWT.Claims" target="http://www.iana.org/assignments/cwt">
@@ -917,25 +916,10 @@
       </t>
 
       <t>
-	-01
-	<list style='symbols'>
-	  <t>
-	    Tracked CBOR Web Token (CWT) Claims Registry updates.
-	  </t>
-	  <t>
-	    Addressed review comments by Michael Richardson and Jim Schaad.
-	  </t>
-	  <t>
-	    Added co-authors.
-	  </t>
-        </list>
-      </t>
-
-      <t>
 	-00
 	<list style='symbols'>
 	  <t>
-	    Created the initial draft from RFC 7800.
+	    Created the initial working group draft from draft-jones-ace-cwt-proof-of-possession-01.
 	  </t>
 	</list>
       </t>
