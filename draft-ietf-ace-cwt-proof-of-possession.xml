@@ -251,6 +251,20 @@
 	  and could be registered in
 	  the IANA "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>.
 	</t>
+	<t>
+	  <figure align="center" anchor="fig:cborMappings"
+	    title="Summary of the cnf names, keys, and value types">
+	<artwork><![CDATA[
+/--------------------+-----+-------------------------------\
+| Name               | Key | Value type                    |
+|--------------------+-----+-------------------------------|
+| COSE_Key           | 1   | COSE_Key                      |
+| Encrypted_COSE_Key | 2   | COSE_Encrypt or COSE_Encrypt0 |
+| kid                | 3   | binary string                 |
+\--------------------+-----+-------------------------------/
+]]></artwork>
+	  </figure>
+	</t>
       </section>
 
       <section title="Representation of an Asymmetric Proof-of-Possession Key" anchor="PrivatePoP">
