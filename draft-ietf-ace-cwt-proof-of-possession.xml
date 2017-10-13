@@ -274,21 +274,21 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using JSON notation) demonstrates such a declaration
+	  The following example (using CBOR diagonstic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {
-   "iss": "https://server.example.com",
-   "aud": "https://client.example.org",
-   "exp": 1361398824,
-   "cnf":{
-     "COSE_Key":{
-       "kty": "EC",
-       "crv": "P-256",
-       "x": "18wHLeIgW9wVN6VD1Txgpqy2LszYkMf6J8njVAibvhM",
-       "y": "-V4dS4UaLMgP_4fY4j8ir7cl1TXlFdAgcx55o7TkcSA"
+   {
+   /iss/ 1 : "coaps://server.example.com",
+   /aud/ 3 : "coaps://client.example.org",
+   /exp/ 4 : 1361398824,
+   /cnf/ 8 :{
+     /COSE_Key/ 1 :{
+       /kty/ 1 : /EC/ 2,
+       /crv/ -1 : /P-256/ 1,
+       /x/ -2 : b64'EtboxNKPgxEKV9JTNzytUvAbxEfkCTVB9kOzheF5wRA',
+       /y/ -3: b64'KDs9jSj_pZ_ly1QEEqdQ-o36NPbaabzaaEANZ5wTR-g'
       }
     }
   }
@@ -321,15 +321,15 @@
 	  using COSE_Encrypt or COSE_Encrypt0.
 	</t>
 	<t>
-	  The following example (using JSON notation) illustrates a symmetric key that could subsequently be
+	  The following example (using CBOR diagnostic notation) illustrates a symmetric key that could subsequently be
 	  encrypted for use in the <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {
-   "kty": "oct",
-   "alg": "HS256",
-   "k": "ZoRSOrFzN_FzUA5XKMYoVHyzff5oRJxl-IXRtztJ6uE"
+  {  
+   /kty/ 1 : /Symmetric/ 4,
+   /alg/ 3 : /HMAC256/ 5,
+   /k/ -1 : b64'ZoRSOrFzN_FzUA5XKMYoVHyzff5oRJxl-IXRtztJ6uE'
   }
 ]]></artwork>
 	</figure>
@@ -340,23 +340,27 @@
 	  using the AES-CCM-16-64-128 algorithm.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT (using JSON notation) illustrates
+	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation) illustrates
 	  the use of an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
   {
-   "iss": "https://server.example.com",
-   "sub": "24400320",
-   "aud": "s6BhdRkqt3",
-   "exp": 1311281970,
-   "iat": 1311280970,
-   "cnf":{
-     "Encrypted_COSE_Key":
-       "(TBD)"
-     }
+   /iss/ 1 : "coaps://server.example.com",
+   /sub/ 2 : "24400320",
+   /aud/ 3: "s6BhdRkqt3",
+   /exp/ 4 : 1311281970,
+   /iat/ 5 : 1311280970,
+   /cnf/ 8 : { /COSE_Encrypt0/
+    [
+     /protected header / h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
+     /unprotected header/ { / iv / 5: h'13EACB7BC05DBC872E8010C0E3'},
+     /ciphertext/h'C4E52D9C1DBB52D2CE291C65FB64F3CD5A8811FE058A3AA4972F6DD600'
+     ]
+    }
   }
+  
 ]]></artwork>
 	</figure>
 
@@ -379,17 +383,17 @@
 	  identifying the key.
 	</t>
 	<t>
-	  The following example (using JSON notation) demonstrates such a declaration
+	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
   {
-   "iss": "https://server.example.com",
-   "aud": "https://client.example.org",
-   "exp": 1361398824,
-   "cnf":{
-     "kid": "dfd1aa97-6d8d-4575-a0fe-34b96de2bfad"
+   /iss/ 1 : "coaps://server.example.com",
+   /aud/ 3 : "coaps://client.example.org",
+   /exp/ 4 : 1361398824,
+   /cnf/ 8 : {
+     /kid/ 2 : b64'dfd1aa97-6d8d-4575-a0fe-34b96de2bfad'
     }
   }
 ]]></artwork>
