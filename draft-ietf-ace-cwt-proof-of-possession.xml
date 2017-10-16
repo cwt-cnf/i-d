@@ -342,9 +342,8 @@
 	  using the AES-CCM-16-64-128 algorithm.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation, with linebreaks for
-	  readability) illustrates
-	  the use of an encrypted symmetric key as the
+	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation, with
+	  linebreaks for readability) illustrates the use of an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
 	<figure>
@@ -405,7 +404,7 @@
    /aud/ 3 : "coaps://client.example.org",
    /exp/ 4 : 1361398824,
    /cnf/ 8 : {
-     /kid/ 2 : h'dfd1aa97-6d8d-4575-a0fe-34b96de2bfad'
+     /kid/ 2 : h'dfd1aa976d8d4575a0fe34b96de2bfad'
     }
   }
 ]]></artwork>
