@@ -274,21 +274,21 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using JSON notation) demonstrates such a declaration
+	  The following example (using CBOR diagonstic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {
-   "iss": "https://server.example.com",
-   "aud": "https://client.example.org",
-   "exp": 1361398824,
-   "cnf":{
-     "COSE_Key":{
-       "kty": "EC",
-       "crv": "P-256",
-       "x": "18wHLeIgW9wVN6VD1Txgpqy2LszYkMf6J8njVAibvhM",
-       "y": "-V4dS4UaLMgP_4fY4j8ir7cl1TXlFdAgcx55o7TkcSA"
+   {
+   /iss/ 1 : "coaps://server.example.com",
+   /aud/ 3 : "coaps://client.example.org",
+   /exp/ 4 : 1361398824,
+   /cnf/ 8 :{
+     /COSE_Key/ 1 :{
+       /kty/ 1 : /EC/ 2,
+       /crv/ -1 : /P-256/ 1,
+       /x/ -2 : b64'18wHLeIgW9wVN6VD1Txgpqy2LszYkMf6J8njVAibvhM',
+       /y/ -3 : b64'-V4dS4UaLMgP_4fY4j8ir7cl1TXlFdAgcx55o7TkcSA'
       }
     }
   }
@@ -321,15 +321,17 @@
 	  using COSE_Encrypt or COSE_Encrypt0.
 	</t>
 	<t>
-	  The following example (using JSON notation) illustrates a symmetric key that could subsequently be
-	  encrypted for use in the <spanx style="verb">Encrypted_COSE_Key</spanx> member:
+	  The following example (using CBOR diagnostic notation, with linebreaks for readability)
+	  illustrates a symmetric key that could subsequently be encrypted for use in the
+	  <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {
-   "kty": "oct",
-   "alg": "HS256",
-   "k": "ZoRSOrFzN_FzUA5XKMYoVHyzff5oRJxl-IXRtztJ6uE"
+  {  
+   /kty/ 1 : /Symmetric/ 4,
+   /alg/ 3 : /HMAC256/ 5,
+   /k/ -1 : h'6684523ab17337f173500e5728c628547cb37df
+              e68449c65f885d1b73b49eae1A0B0C0D0E0F10'
   }
 ]]></artwork>
 	</figure>
@@ -340,26 +342,39 @@
 	  using the AES-CCM-16-64-128 algorithm.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT (using JSON notation) illustrates
-	  the use of an encrypted symmetric key as the
+	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation, with
+	  linebreaks for readability) illustrates the use of an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
   {
-   "iss": "https://server.example.com",
-   "sub": "24400320",
-   "aud": "s6BhdRkqt3",
-   "exp": 1311281970,
-   "iat": 1311280970,
-   "cnf":{
-     "Encrypted_COSE_Key":
-       "(TBD)"
-     }
+   /iss/ 1 : "coaps://server.example.com",
+   /sub/ 2 : "24400320",
+   /aud/ 3: "s6BhdRkqt3",
+   /exp/ 4 : 1311281970,
+   /iat/ 5 : 1311280970,
+   /cnf/ 8 : {
+   /COSE_Encrypt0/ 2 : [
+       /protected header / h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
+       /unprotected header/ { / iv / 5: h'636898994FF0EC7BFCF6D3F95B'},
+       /ciphertext/  h'0573318A3573EB983E55A7C2F06CADD0796C9E584F1D0E3E
+                       A8C5B052592A8B2694BE9654F0431F38D5BBC8049FA7F13F'
+     ]
+    }
   }
+  
 ]]></artwork>
 	</figure>
 
+	<t>
+	The example above was generated with the key:
+	</t>
+	<figure>
+	  <artwork><![CDATA[
+	  h'6162630405060708090a0b0c0d0e0f10'
+]]></artwork>
+	</figure>	
       </section>
 
       <section title="Representation of a Key ID for a Proof-of-Possession Key" anchor="KidPoP">
@@ -379,17 +394,17 @@
 	  identifying the key.
 	</t>
 	<t>
-	  The following example (using JSON notation) demonstrates such a declaration
+	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
   {
-   "iss": "https://server.example.com",
-   "aud": "https://client.example.org",
-   "exp": 1361398824,
-   "cnf":{
-     "kid": "dfd1aa97-6d8d-4575-a0fe-34b96de2bfad"
+   /iss/ 1 : "coaps://server.example.com",
+   /aud/ 3 : "coaps://client.example.org",
+   /exp/ 4 : 1361398824,
+   /cnf/ 8 : {
+     /kid/ 2 : h'dfd1aa976d8d4575a0fe34b96de2bfad'
     }
   }
 ]]></artwork>
