@@ -131,10 +131,12 @@
      </t>
 
      <section title="Notational Conventions" anchor="NotationalConventions">
-       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-       "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
-       and "OPTIONAL" in this
-       document are to be interpreted as described in <xref target="RFC2119"/>.
+       <t>
+         The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+         "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+         "MAY", and "OPTIONAL" in this document are to be interpreted as
+         described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+         when, and only when, they appear in all capitals, as shown here.
        </t>
        <t>
 	 Unless otherwise noted, all the protocol parameter names and values are case sensitive.
@@ -200,7 +202,7 @@
 	The case in which the presenter is the subject of the CWT is analogous to
 	Security Assertion Markup Language (SAML) 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation usage.
 	At least one of the <spanx style="verb">sub</spanx> and <spanx style="verb">iss</spanx>
-	claims is typically present in the CWT and 
+	claims is typically present in the CWT and
 	some use cases may require that both be present.
       </t>
 
@@ -327,7 +329,7 @@
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {  
+  {
    /kty/ 1 : /Symmetric/ 4,
    /alg/ 3 : /HMAC256/ 5,
    /k/ -1 : h'6684523ab17337f173500e5728c628547cb37df
@@ -363,7 +365,7 @@
      ]
     }
   }
-  
+
 ]]></artwork>
 	</figure>
 
@@ -374,7 +376,7 @@
 	  <artwork><![CDATA[
 	  h'6162630405060708090a0b0c0d0e0f10'
 ]]></artwork>
-	</figure>	
+	</figure>
       </section>
 
       <section title="Representation of a Key ID for a Proof-of-Possession Key" anchor="KidPoP">
@@ -796,6 +798,7 @@
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6125.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7049.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml' ?>
 
       <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-07">
 	<front>
@@ -1001,7 +1004,7 @@
 	</list>
       </t>
 
-    </section>     
+    </section>
 
   </back>
 </rfc>
