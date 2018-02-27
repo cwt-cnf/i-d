@@ -200,7 +200,7 @@
 	The case in which the presenter is the subject of the CWT is analogous to
 	Security Assertion Markup Language (SAML) 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation usage.
 	At least one of the <spanx style="verb">sub</spanx> and <spanx style="verb">iss</spanx>
-	claims is typically present in the CWT and 
+	claims is typically present in the CWT and
 	some use cases may require that both be present.
       </t>
 
@@ -287,8 +287,10 @@
      /COSE_Key/ 1 :{
        /kty/ 1 : /EC/ 2,
        /crv/ -1 : /P-256/ 1,
-       /x/ -2 : b64'18wHLeIgW9wVN6VD1Txgpqy2LszYkMf6J8njVAibvhM',
-       /y/ -3 : b64'-V4dS4UaLMgP_4fY4j8ir7cl1TXlFdAgcx55o7TkcSA'
+       /x/ -2 : h'd7cc072de2205bdc1537a543d53c60a6acb62eccd890c7fa27c9
+                  e354089bbe13',
+       /y/ -3 : h'f95e1d4b851a2cc80fff87d8e23f22afb725d535e515d020731e
+                  79a3b4e47120'
       }
     }
   }
@@ -327,7 +329,7 @@
 	</t>
 	<figure>
 	  <artwork><![CDATA[
-  {  
+  {
    /kty/ 1 : /Symmetric/ 4,
    /alg/ 3 : /HMAC256/ 5,
    /k/ -1 : h'6684523ab17337f173500e5728c628547cb37df
@@ -363,7 +365,7 @@
      ]
     }
   }
-  
+
 ]]></artwork>
 	</figure>
 
@@ -374,7 +376,7 @@
 	  <artwork><![CDATA[
 	  h'6162630405060708090a0b0c0d0e0f10'
 ]]></artwork>
-	</figure>	
+	</figure>
       </section>
 
       <section title="Representation of a Key ID for a Proof-of-Possession Key" anchor="KidPoP">
@@ -1001,7 +1003,7 @@
 	</list>
       </t>
 
-    </section>     
+    </section>
 
   </back>
 </rfc>
