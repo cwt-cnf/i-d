@@ -131,10 +131,12 @@
      </t>
 
      <section title="Notational Conventions" anchor="NotationalConventions">
-       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-       "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
-       and "OPTIONAL" in this
-       document are to be interpreted as described in <xref target="RFC2119"/>.
+       <t>
+         The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+         "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+         "MAY", and "OPTIONAL" in this document are to be interpreted as
+         described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+         when, and only when, they appear in all capitals, as shown here.
        </t>
        <t>
 	 Unless otherwise noted, all the protocol parameter names and values are case sensitive.
@@ -798,6 +800,7 @@
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6125.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7049.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml' ?>
 
       <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-07">
 	<front>
