@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-01"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-02"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -93,7 +93,7 @@
       </address>
     </author>
 
-    <date day="30" month="October" year="2017"/>
+    <date day="2" month="March" year="2018"/>
 
     <area>Security</area>
     <workgroup>ACE Working Group</workgroup>
@@ -465,7 +465,7 @@
 
       <section title="Specifics Intentionally Not Specified" anchor="NotSpecified">
 	<t>
-	  Proof of possession is typically demonstrated by having the presenter sign
+	  Proof of possession is often demonstrated by having the presenter sign
 	  a value determined by the recipient using the key possessed by the presenter.
 	  This value is sometimes called a "nonce" or a "challenge".
 	</t>
@@ -967,19 +967,24 @@
       </t>
     </section>
 
-    <section anchor="TBD" title="Open Issues">
-      <t>
-        <list style='symbols'>
-          <t>
-	    Convert the examples from JSON/JWT to CBOR/CWT.
-	  </t>
-	</list>
-      </t>
-    </section>
-
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+      <t>
+	-02
+	<list style='symbols'>
+	  <t>
+	    Changed "typically" to "often" when describing ways of performing proof of possession.
+	  </t>
+	  <t>
+	    Changed b64 to hex encoding in an example.
+	  </t>
+	  <t>
+	    Changed to using the RFC 8174 boilerplate instead of the RFC 2119 boilerplate.
+	  </t>
+	</list>
       </t>
 
       <t>
