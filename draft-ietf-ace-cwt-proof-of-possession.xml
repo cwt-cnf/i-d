@@ -93,7 +93,7 @@
       </address>
     </author>
 
-    <date day="2" month="March" year="2018"/>
+    <date day="3" month="March" year="2018"/>
 
     <area>Security</area>
     <workgroup>ACE Working Group</workgroup>
@@ -802,7 +802,7 @@
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml' ?>
 
-      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-07">
+      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-11">
 	<front>
 	  <title abbrev="CBOR Web Token">CBOR Web Token (CWT)</title>
 
@@ -835,9 +835,9 @@
 	    </address>
 	  </author>
 
-	  <date day="29" month="June" year="2017" />
+	  <date day="21" month="January" year="2018" />
 	</front>
-	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-07"/>
+	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-11"/>
       </reference>
 
       <reference anchor="IANA.CWT.Claims" target="http://www.iana.org/assignments/cwt">
