@@ -497,7 +497,7 @@
       <t>
 	Applications utilizing proof of possession should also utilize audience restriction,
 	as described in Section 4.1.3 of <xref target="JWT"/>,
-	as it provides different protections.
+	as it provides additional protections.
 	Proof of possession can be used by recipients to reject messages from unauthorized senders.
 	Audience restriction can be used by recipients to reject messages intended for different recipients.
       </t>
