@@ -532,7 +532,7 @@
 	As described in Section 6 (Key Identification) and Appendix D (Notes on Key Selection)
 	of <xref target="JWS"/>, it is important to make explicit trust decisions about the keys.
 	Proof-of-possession signatures made with keys
-	not meeting the application's trust criteria MUST NOT not be relied upon.
+	not meeting the application's trust criteria MUST NOT be relied upon.
       </t>
     </section>
 
