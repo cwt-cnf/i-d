@@ -513,7 +513,7 @@
 	This attack can, for example, be avoided when a signed nonce or challenge is used
 	since the recipient can use a distinct nonce or challenge for each interaction.
 	Replay can also be avoided if a sub-key is derived from a shared secret
-	that is specific to the instance of the proof of possession demonstration.
+	that is specific to the instance of the proof-of-possession demonstration.
       </t>
       <t>
 	As is the case with other information included in a CWT,
