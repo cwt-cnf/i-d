@@ -495,7 +495,7 @@
 	do not learn private key or symmetric key values.
       </t>
       <t>
-	Applications utilizing proof of possession should also utilize audience restriction,
+	Applications utilizing proof of possession SHOULD also utilize audience restriction,
 	as described in Section 4.1.3 of <xref target="JWT"/>,
 	as it provides additional protections.
 	Proof of possession can be used by recipients to reject messages from unauthorized senders.
@@ -505,7 +505,7 @@
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
 	Applications that require
 	the proof-of-possession keys communicated with it
-	to be understood and processed must ensure that
+	to be understood and processed MUST ensure that
 	the parts of this specification that they use are implemented.
       </t>
       <t>
