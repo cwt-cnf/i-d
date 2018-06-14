@@ -242,7 +242,7 @@
 	  <spanx style="verb">COSE_Key</spanx>
 	  and <spanx style="verb">Encrypted_COSE_Key</spanx>
 	  <!-- and <spanx style="verb">jku</spanx> (JWK Set URL) -->
-	  confirmation values defined below may be present.
+	  confirmation values defined in <xref target="fig:cborMappings"/> may be present.
 	  Note that if an application needs to represent multiple proof-of-possession
 	  keys in the same CWT, one way for it to achieve this is to
 	  use other claim names, in addition to <spanx style="verb">cnf</spanx>,
@@ -276,7 +276,7 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using CBOR diagonstic notation) demonstrates such a declaration
+	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -310,7 +310,7 @@
 	  representing a symmetric key, provided that the CWT is encrypted
 	  so that the key is not revealed to unintended parties.
 	  The means of encrypting a CWT is explained in <xref target="CWT"/>.
-	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described below.
+	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described in <xref target="SymmetricPoP"/>.
 	</t>
       </section>
 
@@ -495,9 +495,9 @@
 	do not learn private key or symmetric key values.
       </t>
       <t>
-	Applications utilizing proof of possession should also utilize audience restriction,
+	Applications utilizing proof of possession SHOULD also utilize audience restriction,
 	as described in Section 4.1.3 of <xref target="JWT"/>,
-	as it provides different protections.
+	as it provides additional protections.
 	Proof of possession can be used by recipients to reject messages from unauthorized senders.
 	Audience restriction can be used by recipients to reject messages intended for different recipients.
       </t>
@@ -505,7 +505,7 @@
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
 	Applications that require
 	the proof-of-possession keys communicated with it
-	to be understood and processed must ensure that
+	to be understood and processed MUST ensure that
 	the parts of this specification that they use are implemented.
       </t>
       <t>
@@ -513,7 +513,7 @@
 	This attack can, for example, be avoided when a signed nonce or challenge is used
 	since the recipient can use a distinct nonce or challenge for each interaction.
 	Replay can also be avoided if a sub-key is derived from a shared secret
-	that is specific to the instance of the PoP demonstration.
+	that is specific to the instance of the proof-of-possession demonstration.
       </t>
       <t>
 	As is the case with other information included in a CWT,
@@ -532,7 +532,7 @@
 	As described in Section 6 (Key Identification) and Appendix D (Notes on Key Selection)
 	of <xref target="JWS"/>, it is important to make explicit trust decisions about the keys.
 	Proof-of-possession signatures made with keys
-	not meeting the application's trust criteria MUST NOT not be relied upon.
+	not meeting the application's trust criteria MUST NOT be relied upon.
       </t>
     </section>
 
