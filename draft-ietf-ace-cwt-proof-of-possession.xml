@@ -93,10 +93,10 @@
       </address>
     </author>
 
-    <date day="3" month="March" year="2018"/>
+    <date month="June" year="2018"/>
 
     <area>Security</area>
-    <workgroup>ACE Working Group</workgroup>
+    <workgroup>ACE</workgroup>
 
     <keyword>CBOR Web Token</keyword>
     <keyword>CWT</keyword>
@@ -129,22 +129,18 @@
 	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="CWT"/>
 	rather than JSON <xref target="RFC7159"/> and JWTs <xref target="JWT"/>.
      </t>
+    </section>
 
-     <section title="Notational Conventions" anchor="NotationalConventions">
-       <t>
+    <section title='Terminology' anchor='Terminology'>
+	
+	   <t>
          The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
          "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
          "MAY", and "OPTIONAL" in this document are to be interpreted as
          described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
          when, and only when, they appear in all capitals, as shown here.
        </t>
-       <t>
-	 Unless otherwise noted, all the protocol parameter names and values are case sensitive.
-       </t>
-     </section>
-    </section>
-
-    <section title='Terminology' anchor='Terminology'>
+     
       <t>
 	This specification uses terms defined in
 	the CBOR Web Token <xref target="CWT"/>,
@@ -162,18 +158,22 @@
 
 	  <t hangText="Issuer">
 	    <vspace/>
-	    Party that creates the CWT and binds its claims to the proof-of-possession key.
+		Party that creates the CWT and binds the claims about the subject to the 
+		proof-of-possession key.
 	  </t>
 
 	  <t hangText="Presenter">
 	    <vspace/>
 	    Party that proves possession of a private key (for asymmetric key cryptography)
-	    or secret key (for symmetric key cryptography) to a recipient.
+	    or secret key (for symmetric key cryptography) to a recipient.<vspace/>
+		In context of OAuth this party is also called the OAuth Client.
 	  </t>
 
 	  <t hangText="Recipient">
 	    <vspace/>
 	    Party that receives the CWT containing the proof-of-possession key information from the presenter.
+		<vspace/>
+		In context of OAuth this party is also called the OAuth Resource Server.
 	  </t>
 
 	</list>
@@ -207,17 +207,13 @@
       </t>
 
       <section title="Confirmation Claim" anchor="Confirmation">
-	<t>
-	  The <spanx style="verb">cnf</spanx> claim is used in the CWT
-	  to contain members used to identify the proof-of-possession key.
-	  Other members of the <spanx style="verb">cnf</spanx> map may be defined because
-	  a proof-of-possession key may not be the only means of confirming
-	  the authenticity of the token.
-	  This is analogous to the SAML 2.0 <xref target="OASIS.saml-core-2.0-os"/>
-	  SubjectConfirmation element in which a number of different
-	  subject confirmation methods can be included
-	  (including proof-of-possession key information).
-	</t>
+	  <t>
+  The <spanx style="verb">cnf</spanx> claim in the CWT is used to carry confirmation methods, some of
+ them use proof-of-possession keys while others do not. This design is
+ analogous to the SAML 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation
+ element in which a number of different subject confirmation methods can
+ be included (including proof-of-possession key information).
+</t>
 	<t>
 	  The set of confirmation members that a
 	  CWT must contain to be considered valid is context dependent
@@ -237,22 +233,14 @@
 	  representations.
 	</t>
 	<t>
-	  The <spanx style="verb">cnf</spanx> claim value MUST represent only a single
-	  proof-of-possession key.  At most one of the
-	  <spanx style="verb">COSE_Key</spanx>
-	  and <spanx style="verb">Encrypted_COSE_Key</spanx>
-	  <!-- and <spanx style="verb">jku</spanx> (JWK Set URL) -->
-	  confirmation values defined in <xref target="fig:cborMappings"/> may be present.
-	  Note that if an application needs to represent multiple proof-of-possession
-	  keys in the same CWT, one way for it to achieve this is to
-	  use other claim names, in addition to <spanx style="verb">cnf</spanx>,
-	  to hold the additional proof-of-possession key information.
-	  These claims could use the same syntax and semantics
-	  as the <spanx style="verb">cnf</spanx> claim.
-	  Those claims would be defined by applications or other specifications
-	  and could be registered in
-	  the IANA "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>.
-	</t>
+	The <spanx style="verb">cnf</spanx> claim value may contain one or multiple proof-of-
+    possession keys. Hence, more than one <spanx style="verb">jwk</spanx>, <spanx style="verb">jwe</spanx>, and/or <spanx style="verb">jku</spanx> (JWK
+    Set URL) confirmation values  may be present in a CWT.  A profile may
+ impose
+    further restrictions on the number of PoP keys that are present and
+    also whether all or a only a subset of them needs to be utilized by in
+    a given application domain.
+</t>
 	<t>
 	  <figure align="center" anchor="fig:cborMappings"
 	    title="Summary of the cnf names, keys, and value types">
@@ -276,7 +264,7 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
+	  The following example (using CBOR diagonstic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -310,7 +298,7 @@
 	  representing a symmetric key, provided that the CWT is encrypted
 	  so that the key is not revealed to unintended parties.
 	  The means of encrypting a CWT is explained in <xref target="CWT"/>.
-	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described in <xref target="SymmetricPoP"/>.
+	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described below.
 	</t>
       </section>
 
@@ -495,9 +483,9 @@
 	do not learn private key or symmetric key values.
       </t>
       <t>
-	Applications utilizing proof of possession SHOULD also utilize audience restriction,
+	Applications utilizing proof of possession should also utilize audience restriction,
 	as described in Section 4.1.3 of <xref target="JWT"/>,
-	as it provides additional protections.
+	as it provides different protections.
 	Proof of possession can be used by recipients to reject messages from unauthorized senders.
 	Audience restriction can be used by recipients to reject messages intended for different recipients.
       </t>
@@ -505,7 +493,7 @@
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
 	Applications that require
 	the proof-of-possession keys communicated with it
-	to be understood and processed MUST ensure that
+	to be understood and processed must ensure that
 	the parts of this specification that they use are implemented.
       </t>
       <t>
@@ -513,7 +501,7 @@
 	This attack can, for example, be avoided when a signed nonce or challenge is used
 	since the recipient can use a distinct nonce or challenge for each interaction.
 	Replay can also be avoided if a sub-key is derived from a shared secret
-	that is specific to the instance of the proof-of-possession demonstration.
+	that is specific to the instance of the PoP demonstration.
       </t>
       <t>
 	As is the case with other information included in a CWT,
@@ -532,7 +520,7 @@
 	As described in Section 6 (Key Identification) and Appendix D (Notes on Key Selection)
 	of <xref target="JWS"/>, it is important to make explicit trust decisions about the keys.
 	Proof-of-possession signatures made with keys
-	not meeting the application's trust criteria MUST NOT be relied upon.
+	not meeting the application's trust criteria MUST NOT not be relied upon.
       </t>
     </section>
 
@@ -961,15 +949,34 @@
 
     <section title='Acknowledgements' anchor='Acknowledgements' numbered="no">
       <t>
-	Thanks to the following people for their reviews of the specification:
-	Michael Richardson and
-	Jim Schaad.
+	We would like to thank Michael Richardson and Jim Schaad for their reviews of the specification.
       </t>
     </section>
 
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+	        <t>
+	-03
+	<list style='symbols'>
+	  <t>
+	    Addressed review comments by Jim Schaad, see https://www.ietf.org/mail-archive/web/ace/current/msg02798.html
+	  </t>
+	  <t>
+	    Removed unnecessary sentence in the introduction regarding the use any strings that could be case-sensitive. 
+	  </t>
+	  <t>
+	  Clarified the terms Presenter and Recipient. 
+	  </t>
+	  <t>
+	  Clarified text about the confirmation claim. 
+	  </t>
+	  <t>
+	  Relaxed the restriction on the number of PoP keys that can be in a 'cnf' object.
+	  </t>
+	</list>
       </t>
 
       <t>
