@@ -264,7 +264,7 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using CBOR diagonstic notation) demonstrates such a declaration
+	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -298,7 +298,7 @@
 	  representing a symmetric key, provided that the CWT is encrypted
 	  so that the key is not revealed to unintended parties.
 	  The means of encrypting a CWT is explained in <xref target="CWT"/>.
-	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described below.
+	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described in <xref target="SymmetricPoP"/>.
 	</t>
       </section>
 
