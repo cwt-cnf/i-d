@@ -51,32 +51,13 @@
 	<email>goran.selander@ericsson.com</email>
       </address>
     </author>
-
-    <author initials="E." surname="Wahlström" fullname="Erik Wahlström">
-      <organization></organization>
-      <address>
-	<postal>
-	  <street></street>
-	  <city></city>
-	  <code></code>
-	  <country>Sweden</country>
-	</postal>
-	<phone></phone>
-	<email>erik@wahlstromstekniska.se</email>
-      </address>
-    </author>
-
     <author fullname="Samuel Erdtman" initials="S.E." surname="Erdtman">
-      <organization>Spotify AB</organization>
+      <organization>Spotify</organization>
       <address>
       	<postal>
-      	  <street>Birger Jarlsgatan 61, 4tr</street>
       	  <city>Stockholm</city>
-      	  <region></region>
-      	  <code>113 56</code>
       	  <country>Sweden</country>
       	</postal>
-      	<phone>+46702691499</phone>
       	<email>erdtman@spotify.com</email>
       </address>
     </author>
@@ -814,15 +795,8 @@
 	    </address>
 	  </author>
 
-	  <author initials="E." surname="Wahlström" fullname="Erik Wahlström">
-	    <organization></organization>
-	    <address>
-	      <email>erik@wahlstromstekniska.se</email>
-	    </address>
-	  </author>
-
 	  <author fullname="Samuel Erdtman" initials="S.E." surname="Erdtman">
-	    <organization>Spotify AB</organization>
+	    <organization>Spotify</organization>
 	    <address>
 	      <email>erdtman@spotify.com</email>
 	    </address>
