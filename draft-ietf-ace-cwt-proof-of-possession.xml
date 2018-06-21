@@ -98,7 +98,7 @@
   <middle>
     <section title="Introduction" anchor="Introduction">
       <t>
-        This specification describes how a CBOR Web Token <xref target="RFC8392"/> can declare
+        This specification describes how a CBOR Web Token (CWT) <xref target="RFC8392"/> can declare
 	that the presenter of the CWT possesses a particular proof-of-possession (PoP) key.
 	Proof of possession of a key is also sometimes described as
 	being the holder-of-key.
@@ -125,7 +125,7 @@
     <section title='Terminology' anchor='Terminology'>
       <t>
 	This specification uses terms defined in
-	the CBOR Web Token <xref target="RFC8392"/>,
+	the CBOR Web Token (CWT) <xref target="RFC8392"/>,
 	CBOR Object Signing and Encryption (COSE) <xref target="RFC8152"/>, and
 	Concise Binary Object Representation (CBOR) <xref target="RFC7049"/>
 	specifications.
