@@ -52,31 +52,9 @@
       </address>
     </author>
 
-    <author initials="E." surname="Wahlström" fullname="Erik Wahlström">
-      <organization></organization>
-      <address>
-	<postal>
-	  <street></street>
-	  <city></city>
-	  <code></code>
-	  <country>Sweden</country>
-	</postal>
-	<phone></phone>
-	<email>erik@wahlstromstekniska.se</email>
-      </address>
-    </author>
-
     <author fullname="Samuel Erdtman" initials="S.E." surname="Erdtman">
-      <organization>Spotify AB</organization>
+      <organization>Spotify</organization>
       <address>
-      	<postal>
-      	  <street>Birger Jarlsgatan 61, 4tr</street>
-      	  <city>Stockholm</city>
-      	  <region></region>
-      	  <code>113 56</code>
-      	  <country>Sweden</country>
-      	</postal>
-      	<phone>+46702691499</phone>
       	<email>erdtman@spotify.com</email>
       </address>
     </author>
@@ -120,13 +98,13 @@
   <middle>
     <section title="Introduction" anchor="Introduction">
       <t>
-        This specification describes how a CBOR Web Token <xref target="CWT"/> can declare
+        This specification describes how a CBOR Web Token (CWT) <xref target="RFC8392"/> can declare
 	that the presenter of the CWT possesses a particular proof-of-possession (PoP) key.
 	Proof of possession of a key is also sometimes described as
 	being the holder-of-key.
 	This specification provides equivalent functionality to
 	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
-	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="CWT"/>
+	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="RFC8392"/>
 	rather than JSON <xref target="RFC7159"/> and JWTs <xref target="JWT"/>.
      </t>
 
@@ -147,7 +125,7 @@
     <section title='Terminology' anchor='Terminology'>
       <t>
 	This specification uses terms defined in
-	the CBOR Web Token <xref target="CWT"/>,
+	the CBOR Web Token (CWT) <xref target="RFC8392"/>,
 	CBOR Object Signing and Encryption (COSE) <xref target="RFC8152"/>, and
 	Concise Binary Object Representation (CBOR) <xref target="RFC7049"/>
 	specifications.
@@ -192,10 +170,10 @@
       <t>
 	The presenter can be identified in one of several ways by the CWT
 	depending upon the application requirements.
-	If the CWT contains a <spanx style="verb">sub</spanx> (subject) claim <xref target="CWT"/>,
+	If the CWT contains a <spanx style="verb">sub</spanx> (subject) claim <xref target="RFC8392"/>,
 	the presenter is normally the subject identified by the CWT.
 	(In some applications, the subject identifier will be relative to
-	the issuer identified by the <spanx style="verb">iss</spanx> (issuer) claim <xref target="CWT"/>.)
+	the issuer identified by the <spanx style="verb">iss</spanx> (issuer) claim <xref target="RFC8392"/>.)
 	If the CWT contains no <spanx style="verb">sub</spanx> claim,
 	the presenter is normally the issuer identified by the CWT
 	using the <spanx style="verb">iss</spanx> claim.
@@ -309,7 +287,7 @@
 	  The <spanx style="verb">COSE_Key</spanx> member MAY also be used for a COSE_Key
 	  representing a symmetric key, provided that the CWT is encrypted
 	  so that the key is not revealed to unintended parties.
-	  The means of encrypting a CWT is explained in <xref target="CWT"/>.
+	  The means of encrypting a CWT is explained in <xref target="RFC8392"/>.
 	  If the CWT is not encrypted, the symmetric key MUST be encrypted as described in <xref target="SymmetricPoP"/>.
 	</t>
       </section>
@@ -488,7 +466,7 @@
     <section anchor="Security" title="Security Considerations">
       <t>
         All of the security considerations that
-        are discussed in <xref target="CWT"/> also apply here.
+        are discussed in <xref target="RFC8392"/> also apply here.
         In addition, proof of possession introduces its own unique security issues.
 	Possessing a key is only valuable if it is kept secret.
 	Appropriate means must be used to ensure that unintended parties
@@ -590,7 +568,7 @@
 	<t>
 	  This specification registers the <spanx style="verb">cnf</spanx> claim in the IANA
 	  "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>
-	  established by <xref target="CWT"/>.
+	  established by <xref target="RFC8392"/>.
 	</t>
 
 	<section anchor='ClaimsContents' title='Registry Contents'>
@@ -793,52 +771,11 @@
   <back>
     <references title="Normative References">
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml' ?>
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml' ?>
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml' ?>
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5246.xml' ?>
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6125.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7049.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml' ?>
-
-      <reference anchor="CWT" target="https://tools.ietf.org/html/draft-ietf-ace-cbor-web-token-11">
-	<front>
-	  <title abbrev="CBOR Web Token">CBOR Web Token (CWT)</title>
-
-	  <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
-	    <organization>Microsoft</organization>
-	    <address>
-	      <email>mbj@microsoft.com</email>
-	      <uri>http://self-issued.info/</uri>
-	    </address>
-	  </author>
-
-	  <author initials="E." surname="Wahlström" fullname="Erik Wahlström">
-	    <organization></organization>
-	    <address>
-	      <email>erik@wahlstromstekniska.se</email>
-	    </address>
-	  </author>
-
-	  <author fullname="Samuel Erdtman" initials="S.E." surname="Erdtman">
-	    <organization>Spotify AB</organization>
-	    <address>
-	      <email>erdtman@spotify.com</email>
-	    </address>
-	  </author>
-
-	  <author fullname="Hannes Tschofenig" initials="H." surname="Tschofenig">
-	    <organization>ARM Ltd.</organization>
-	    <address>
-	      <email>Hannes.Tschofenig@arm.com</email>
-	    </address>
-	  </author>
-
-	  <date day="21" month="January" year="2018" />
-	</front>
-	<seriesInfo name="Work in Progress," value="draft-ietf-ace-cbor-web-token-11"/>
-      </reference>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8392.xml' ?>
 
       <reference anchor="IANA.CWT.Claims" target="http://www.iana.org/assignments/cwt">
         <front>
