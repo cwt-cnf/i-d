@@ -208,7 +208,7 @@
 
       <section title="Confirmation Claim" anchor="Confirmation">
 	  <t>
-  The <spanx style="verb">cnf</spanx> claim in the CWT is used to carry confirmation methods, some of
+  The <spanx style="verb">cnf</spanx> claim in the CWT is used to carry confirmation methods. Some of
  them use proof-of-possession keys while others do not. This design is
  analogous to the SAML 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation
  element in which a number of different subject confirmation methods can
@@ -501,7 +501,7 @@
 	This attack can, for example, be avoided when a signed nonce or challenge is used
 	since the recipient can use a distinct nonce or challenge for each interaction.
 	Replay can also be avoided if a sub-key is derived from a shared secret
-	that is specific to the instance of the proof-of-possession  demonstration.
+	that is specific to the instance of the proof-of-possession demonstration.
       </t>
       <t>
 	As is the case with other information included in a CWT,
