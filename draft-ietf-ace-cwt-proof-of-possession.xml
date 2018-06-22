@@ -166,14 +166,14 @@
 	    <vspace/>
 	    Party that proves possession of a private key (for asymmetric key cryptography)
 	    or secret key (for symmetric key cryptography) to a recipient.<vspace/>
-		In context of OAuth this party is also called the OAuth Client.
+		In context of OAuth this party is also called OAuth Client.
 	  </t>
 
 	  <t hangText="Recipient">
 	    <vspace/>
 	    Party that receives the CWT containing the proof-of-possession key information from the presenter.
 		<vspace/>
-		In context of OAuth this party is also called the OAuth Resource Server.
+		In context of OAuth this party is also called OAuth Resource Server.
 	  </t>
 
 	</list>
