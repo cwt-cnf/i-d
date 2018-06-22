@@ -948,9 +948,13 @@
     </references>
 
     <section title='Acknowledgements' anchor='Acknowledgements' numbered="no">
-      <t>
-	We would like to thank Michael Richardson and Jim Schaad for their reviews of the specification.
-      </t>
+    	<t>Thanks to the following people for their reviews of the specification:	
+            <list style='symbols'>
+		    <t>Michael Richardson</t>
+		    <t>Jim Schaad</t>
+		    <t>Roman Danyliw</t>
+		</list> 
+	</t>
     </section>
 
     <section title="Document History" anchor="History">
