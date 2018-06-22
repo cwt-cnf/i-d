@@ -168,20 +168,19 @@
 	and the members of that map identify the proof-of-possession key.
       </t>
       <t>
-	The presenter can be identified in one of several ways by the CWT
+	The presenter can be identified in one of several ways by the CWT,
 	depending upon the application requirements.
-	If the CWT contains a <spanx style="verb">sub</spanx> (subject) claim <xref target="RFC8392"/>,
-	the presenter is normally the subject identified by the CWT.
-	(In some applications, the subject identifier will be relative to
-	the issuer identified by the <spanx style="verb">iss</spanx> (issuer) claim <xref target="RFC8392"/>.)
-	If the CWT contains no <spanx style="verb">sub</spanx> claim,
-	the presenter is normally the issuer identified by the CWT
-	using the <spanx style="verb">iss</spanx> claim.
+	For instance, some applications may use
+	the CWT <spanx style="verb">sub</spanx> (subject) claim <xref target="RFC8392"/>,
+	to identify the presenter.
+	Other applications may use
+	the <spanx style="verb">iss</spanx> claim
+	to identify the presenter.
+	In some applications, the subject identifier might be relative to
+	the issuer identified by the <spanx style="verb">iss</spanx> (issuer) claim <xref target="RFC8392"/>.
+	The actual mechanism used is dependent upon the application.
 	The case in which the presenter is the subject of the CWT is analogous to
 	Security Assertion Markup Language (SAML) 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation usage.
-	At least one of the <spanx style="verb">sub</spanx> and <spanx style="verb">iss</spanx>
-	claims is typically present in the CWT and
-	some use cases may require that both be present.
       </t>
 
       <section title="Confirmation Claim" anchor="Confirmation">
@@ -479,11 +478,14 @@
 	the parts of this specification that they use are implemented.
       </t>
       <t>
-	Proof of possession via encrypted symmetric secrets is subject to replay attacks.
-	This attack can, for example, be avoided when a signed nonce or challenge is used
-	since the recipient can use a distinct nonce or challenge for each interaction.
-	Replay can also be avoided if a sub-key is derived from a shared secret
-	that is specific to the instance of the proof-of-possession demonstration.
+	CBOR Web Tokens with proof-of-possession keys are used in context of an architecture,
+	such as the ACE OAuth Framework <xref target="I-D.ietf-ace-oauth-authz"/>,
+	in which protocols are used by a presenter to request these tokens
+	and to subsequently use them with recipients.
+	To avoid replay attacks when the proof-of-possession tokens are sent to presenters,
+	a security protocol, which uses mechansims such as nonces or timestamps, has to be utilized.
+	Note that a discussion of the architecture or specific protocols that
+	CWT proof-of-possession tokens are used with is beyond the scope of this specification.
       </t>
       <t>
 	As is the case with other information included in a CWT,
@@ -512,6 +514,30 @@
 	is used with multiple parties.
 	Thus, for privacy reasons, it is recommended that different proof-of-possession keys
 	be used when interacting with different parties.
+      </t>
+    </section>
+
+    <section anchor="Operational" title="Operational Considerations">
+      <t>
+	The use of CWTs with proof-of-possession keys requires additional information
+	to be shared between the involved parties in order to ensure correct processing.
+	The recipient needs to be able to use credentials to verify the authenticity,
+	integrity, and potentially the confidentiality of the CWT and its content.
+	This requires the recipient to know information about the issuer.
+	Likewise, there needs to be agreement between the issuer and the recipient
+	about the claims being used (which is also true of CWTs in general).
+      </t>
+      <t>
+	When an issuer creates a CWT containing a Key ID claim, it needs to make sure that
+	it does not issue another CWT containing the same Key ID with a different content,
+	or for a different subject, within the lifetime of the CWTs, unless intentionally desired.
+	Failure to do so may allow one party to impersonate another party,
+	with the potential to gain additional privileges.
+	Likewise, if PoP keys are used for multiple different kinds of CWTs in an application
+	and the PoP keys are identified by Key IDs, care must be taken to keep the keys
+	for the different kinds of CWTs segregated so that an attacker cannot
+	cause the wrong PoP key to be used by using a valid Key ID
+	for the wrong kind of CWT.
       </t>
     </section>
 
@@ -886,15 +912,17 @@
         </front>
       </reference>
 
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-ace-oauth-authz-12"?>
+
     </references>
 
     <section title='Acknowledgements' anchor='Acknowledgements' numbered="no">
       <t>
-	      Thanks to the following people for their reviews of the specification:
+	Thanks to the following people for their reviews of the specification:
         Roman Danyliw,
-	      Michael Richardson,
+	Michael Richardson,
         and
-	      Jim Schaad.
+	Jim Schaad.
       </t>
       <t>Ludwig Seitz and Goeran Selander worked on this document as part of
     the CelticPlus project CyberWI, with funding from Vinnova.</t>
