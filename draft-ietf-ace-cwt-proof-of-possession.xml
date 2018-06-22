@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-02"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-03"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -233,14 +233,18 @@
 	  representations.
 	</t>
 	<t>
-	The <spanx style="verb">cnf</spanx> claim value may contain one or multiple proof-of-
-    possession keys. Hence, more than one <spanx style="verb">jwk</spanx>, <spanx style="verb">jwe</spanx>, and/or <spanx style="verb">jku</spanx> (JWK
-    Set URL) confirmation values  may be present in a CWT.  A profile may
- impose
-    further restrictions on the number of PoP keys that are present and
-    also whether all or a only a subset of them needs to be utilized by in
-    a given application domain.
-</t>
+		The <spanx style="verb">cnf</spanx> claim value MUST represent only a single 
+		proof-of-possession key. At most one of the <spanx style="verb">COSE_Key</spanx> 
+		and <spanx style="verb">Encrypted_COSE_Key</spanx> confirmation values defined 
+		in <xref target="fig:cborMappings"/> may be present. Note that if an application 
+		needs to represent multiple proof-of-possession keys in the same CWT, one way 
+		for it to achieve this is to use other claim names, in addition to 
+		<spanx style="verb">cnf</spanx>, to hold the additional proof-of-possession 
+		key information. These claims could use the same syntax and semantics as the 
+		<spanx style="verb">cnf</spanx> claim. Those claims would be defined by 
+		applications or other specifications and could be registered in the 
+		IANA "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>.
+	</t>
 	<t>
 	  <figure align="center" anchor="fig:cborMappings"
 	    title="Summary of the cnf names, keys, and value types">
@@ -976,9 +980,6 @@
 	  </t>
 	  <t>
 	  Clarified text about the confirmation claim. 
-	  </t>
-	  <t>
-	  Relaxed the restriction on the number of PoP keys that can be in a 'cnf' object.
 	  </t>
 	</list>
       </t>
