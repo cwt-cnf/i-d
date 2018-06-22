@@ -889,13 +889,15 @@
     </references>
 
     <section title='Acknowledgements' anchor='Acknowledgements' numbered="no">
-    	<t>Thanks to the following people for their reviews of the specification:	
-            <list style='symbols'>
-		    <t>Michael Richardson</t>
-		    <t>Jim Schaad</t>
-		    <t>Roman Danyliw</t>
-		</list> 
-	</t>
+      <t>
+	      Thanks to the following people for their reviews of the specification:
+        Roman Danyliw,
+	      Michael Richardson,
+        and
+	      Jim Schaad.
+      </t>
+      <t>Ludwig Seitz and Goeran Selander worked on this document as part of
+    the CelticPlus project CyberWI, with funding from Vinnova.</t>
     </section>
 
     <section title="Document History" anchor="History">
