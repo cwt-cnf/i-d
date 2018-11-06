@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-03"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-04"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -71,7 +71,7 @@
       </address>
     </author>
 
-    <date month="June" year="2018"/>
+    <date month="November" year="2018"/>
 
     <area>Security</area>
     <workgroup>ACE</workgroup>
@@ -311,8 +311,6 @@
 	<t>
 	  The COSE_Key representation
 	  is used as the plaintext when encrypting the key.
-	  The COSE_Key could, for instance, be encrypted using a COSE_Encrypt0 representation
-	  using the AES-CCM-16-64-128 algorithm.
 	</t>
 	<t>
 	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation, with
@@ -467,7 +465,6 @@
 	Applications utilizing proof of possession SHOULD also utilize audience restriction,
 	as described in Section 4.1.3 of <xref target="JWT"/>,
 	as it provides additional protections.
-	Proof of possession can be used by recipients to reject messages from unauthorized senders.
 	Audience restriction can be used by recipients to reject messages intended for different recipients.
       </t>
       <t>
@@ -691,7 +688,7 @@
 		Confirmation Key: 1
 	      </t>
 	      <t>
-		Confirmation Value Type(s): map
+		Confirmation Value Type(s): COSE_Key structure
 	      </t>
               <t>
                 Change Controller: IESG
@@ -716,7 +713,7 @@
 		Confirmation Key: 2
 	      </t>
 	      <t>
-		Confirmation Value Type(s): array (with an optional COSE_Encrypt or COSE_Encrypt0 tag)
+		Confirmation Value Type(s): COSE_Encrypt or COSE_Encrypt0 structure (with an optional corresponding COSE_Encrypt or COSE_Encrypt0 tag)
 	      </t>
               <t>
                 Change Controller: IESG
@@ -912,7 +909,7 @@
         </front>
       </reference>
 
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-ace-oauth-authz-12"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-ace-oauth-authz-16"?>
 
     </references>
 
@@ -933,7 +930,16 @@
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
       </t>
 
-	        <t>
+      <t>
+	-04
+	<list style='symbols'>
+	  <t>
+	    Addressed additional WGLC comments by Jim Schaad and Roman Danyliw.
+	  </t>
+	</list>
+      </t>
+
+      <t>
 	-03
 	<list style='symbols'>
 	  <t>
