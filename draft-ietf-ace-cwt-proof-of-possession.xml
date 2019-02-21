@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-05"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-06"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -71,7 +71,7 @@
       </address>
     </author>
 
-    <date day="9" month="November" year="2018"/>
+    <date day="21" month="February" year="2019"/>
 
     <area>Security</area>
     <workgroup>ACE</workgroup>
@@ -105,7 +105,7 @@
 	This specification provides equivalent functionality to
 	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
 	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="RFC8392"/>
-	rather than JSON <xref target="RFC7159"/> and JWTs <xref target="JWT"/>.
+	rather than JSON <xref target="RFC8259"/> and JWTs <xref target="JWT"/>.
      </t>
     </section>
 
@@ -327,7 +327,7 @@
    /iat/ 5 : 1311280970,
    /cnf/ 8 : {
    /COSE_Encrypt0/ 2 : [
-       /protected header / h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
+       /protected header/ h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
        /unprotected header/ { / iv / 5: h'636898994FF0EC7BFCF6D3F95B'},
        /ciphertext/  h'0573318A3573EB983E55A7C2F06CADD0796C9E584F1D0E3E
                        A8C5B052592A8B2694BE9654F0431F38D5BBC8049FA7F13F'
@@ -610,7 +610,7 @@
       </t>
       <t>
 	Values are registered on a Specification Required
-	<xref target="RFC5226"/> basis after a three-week review period on the cwt-reg-review@ietf.org mailing
+	<xref target="RFC8126"/> basis after a three-week review period on the cwt-reg-review@ietf.org mailing
 	list, on the advice of one or more Designated Experts. However, to allow for the
 	allocation of values prior to publication, the Designated Experts may approve
 	registration once they are satisfied that such a specification will be published.
@@ -850,8 +850,8 @@
   <back>
     <references title="Normative References">
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml' ?>
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7049.xml' ?>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8152.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8392.xml' ?>
@@ -869,7 +869,7 @@
     </references>
 
     <references title="Informative References">
-      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml' ?>
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7800.xml' ?>
 
       <reference anchor="JWS" target="http://www.rfc-editor.org/info/rfc7515">
@@ -924,7 +924,7 @@
 	  <date month="May" year="2015"/>
         </front>
         <seriesInfo name="RFC" value="7519"/>
-	<seriesInfo name="DOI" value="10.17487/RFC7159"/>
+	<seriesInfo name="DOI" value="10.17487/RFC7519"/>
       </reference>
 
       <!-- <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml2/reference.OASIS.saml-core-2.0-os.xml' ?> -->
@@ -973,7 +973,7 @@
         </front>
       </reference>
 
-      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-ace-oauth-authz-16"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-ace-oauth-authz-21"?>
 
     </references>
 
@@ -992,6 +992,15 @@
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+      <t>
+	-06
+	<list style='symbols'>
+	  <t>
+	   Corrected nits identified by Roman Danyliw.
+	  </t>
+	</list>
       </t>
 
       <t>
