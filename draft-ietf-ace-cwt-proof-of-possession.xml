@@ -392,12 +392,11 @@
 	<t>
 	  Note that the use of a Key ID to identify a proof-of-possesion key needs to be carefully circumscribed,
 	  as described below and in <xref target="Operational"/>.
-	  Where the Key ID is not a cryptographic value derived from the key
-	  or where all of the parties involved are not validating the cryptographic derivation,
-	  it is possible to get into situations where the same Key ID is being used for multiple keys.
-	  The implication of this is that a recipient may have multiple keys known to it
-	  that have the same Key ID,
-	  and thus it might not know which proof-of-possession key is associated with the CWT.
+	  In cases where the Key ID is not a cryptographic value derived from the key
+	  or where not all of the parties involved are validating the cryptographic derivation,
+	  implementers should expect collisions, where different keys are assigned the same Key ID.
+	  Recipients of a CWT with a pop-key linked through only a Key ID should be prepared to handle
+	  such situations.
 	</t>
 	<t>
 	  In the world of constrained Internet of Things (IoT) devices,
