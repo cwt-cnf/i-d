@@ -599,6 +599,10 @@
 	within the lifetime of the CWTs, unless intentionally desired.
 	Failure to do so may allow one party to impersonate another party,
 	with the potential to gain additional privileges.
+	Cases where such a re-use of a Key ID would be intentional are when a presenter obtains
+	a CWT with different claims (e.g. extended scope) for the same recipient, but wants to
+	continue using an existing security association (e.g. a DTLS session) bound to the key
+	identified by said Key ID.
 	Likewise, if PoP keys are used for multiple different kinds of CWTs in an application
 	and the PoP keys are identified by Key IDs, care must be taken to keep the keys
 	for the different kinds of CWTs segregated so that an attacker cannot
