@@ -402,7 +402,7 @@
 	  In the world of constrained Internet of Things (IoT) devices,
 	  there is frequently a restriction on the size of Key IDs,
 	  either because of table constraints or a desire to keep message sizes small.
-	  These restrictions are going to protocol dependent.
+	  These restrictions are protocol dependent.
 	  For example, DTLS can use a Key ID of any size.
 	  However, if the key is being used with COSE encrypted message,
 	  then the length of the key needs to be minimized
