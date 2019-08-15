@@ -306,7 +306,7 @@
 	  <artwork><![CDATA[
   {
    /kty/ 1 : /Symmetric/ 4,
-   /alg/ 3 : /HMAC256/ 5,
+   /alg/ 3 : /HMAC256//256/ 5,
    /k/ -1 : h'6684523ab17337f173500e5728c628547cb37df
               e68449c65f885d1b73b49eae1'
   }
