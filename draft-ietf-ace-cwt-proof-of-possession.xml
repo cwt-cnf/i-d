@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 
@@ -578,7 +577,7 @@
     <section anchor="Privacy" title="Privacy Considerations">
       <t>
 	A proof-of-possession key can be used as a correlation handle if the same key
-	is used with multiple parties.
+	is used on multiple occasions. 
 	Thus, for privacy reasons, it is recommended that different proof-of-possession keys
 	be used when interacting with different parties.
       </t>
@@ -596,8 +595,8 @@
       </t>
       <t>
 	When an issuer creates a CWT containing a Key ID claim, it needs to make sure that
-	it does not issue another CWT containing the same Key ID with a different content,
-	or for a different subject, within the lifetime of the CWTs, unless intentionally desired.
+	it does not issue another CWT with different claims containing the same Key ID,
+	within the lifetime of the CWTs, unless intentionally desired.
 	Failure to do so may allow one party to impersonate another party,
 	with the potential to gain additional privileges.
 	Likewise, if PoP keys are used for multiple different kinds of CWTs in an application
