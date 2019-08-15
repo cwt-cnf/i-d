@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
@@ -448,7 +449,7 @@
 	      If an issuer is going to use the Key ID confirmation method
 	      and is not going to guarantee that Key ID uniqueness is going to be preserved,
 	      the recipient needs to have that information configured into it
-	      so that appropriate actions can be taken.
+	      so that it can handle proof-of-possession attempts with mismatched keys.
 	    </t>
 	  </list>
 	</t>
