@@ -446,7 +446,7 @@
 	    </t>
 	    <t>
 	      If an issuer is going to use the Key ID confirmation method
-	      and is not going to guarantee that serial number uniqueness is going to be preserved,
+	      and is not going to guarantee that Key ID uniqueness is going to be preserved,
 	      the recipient needs to have that information configured into it
 	      so that appropriate actions can be taken.
 	    </t>
