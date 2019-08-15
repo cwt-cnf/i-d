@@ -405,7 +405,7 @@
 	  These restrictions are protocol dependent.
 	  For example, DTLS can use a Key ID of any size.
 	  However, if the key is being used with COSE encrypted message,
-	  then the length of the key needs to be minimized
+	  then the length of the Key ID needs to be minimized
 	  and may have a limit as small as one byte.
 	</t>
 	<t>
