@@ -547,8 +547,10 @@
 	such as the ACE OAuth Framework <xref target="I-D.ietf-ace-oauth-authz"/>,
 	in which protocols are used by a presenter to request these tokens
 	and to subsequently use them with recipients.
-	To avoid replay attacks when the proof-of-possession tokens are sent to presenters,
-	a security protocol, which uses mechansims such as nonces or timestamps, has to be utilized.
+	Proof of possession only provides the intended security gains when the
+	proof is known to be current and not subject to replay attacks; security
+	protocols using mechanisms such as nonces and timestamps can be used to
+	avoid this risk of replay when performing a proof-of-possession for a token.
 	Note that a discussion of the architecture or specific protocols that
 	CWT proof-of-possession tokens are used with is beyond the scope of this specification.
       </t>
