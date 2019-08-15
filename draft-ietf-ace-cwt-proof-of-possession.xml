@@ -379,7 +379,7 @@
    /aud/ 3 : "coaps://resource.example.org",
    /exp/ 4 : 1361398824,
    /cnf/ 8 : {
-     /kid/ 2 : h'dfd1aa976d8d4575a0fe34b96de2bfad'
+     /kid/ 3 : h'dfd1aa976d8d4575a0fe34b96de2bfad'
     }
   }
 ]]></artwork>
