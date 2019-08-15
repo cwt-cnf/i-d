@@ -608,8 +608,7 @@
 	for the different kinds of CWTs segregated so that an attacker cannot
 	cause the wrong PoP key to be used by using a valid Key ID
 	for the wrong kind of CWT. Using audience restrictions for the CWT would
-	be one strategy to mitigate this risk.
-	
+	be one strategy to mitigate this risk.	
       </t>
     </section>
 
@@ -732,8 +731,7 @@
               <t hangText='Change Controller:'>
                 <vspace/>
                 For Standards Track RFCs, list the "IESG". For others, give the name of the
-                responsible party. Other details (e.g., postal address, email address, home page
-                URI) may also be included.
+                responsible party.
               </t>
               <t hangText='Specification Document(s):'>
                 <vspace/>
