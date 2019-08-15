@@ -375,8 +375,8 @@
 	<figure>
 	  <artwork><![CDATA[
   {
-   /iss/ 1 : "coaps://server.example.com",
-   /aud/ 3 : "coaps://client.example.org",
+   /iss/ 1 : "coaps://as.example.com",
+   /aud/ 3 : "coaps://resource.example.org",
    /exp/ 4 : 1361398824,
    /cnf/ 8 : {
      /kid/ 2 : h'dfd1aa976d8d4575a0fe34b96de2bfad'
