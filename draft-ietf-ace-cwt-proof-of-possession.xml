@@ -257,10 +257,10 @@
    {
    /iss/ 1 : "coaps://server.example.com",
    /aud/ 3 : "coaps://client.example.org",
-   /exp/ 4 : 1361398824,
+   /exp/ 4 : 1879067471,
    /cnf/ 8 :{
      /COSE_Key/ 1 :{
-       /kty/ 1 : /EC/ 2,
+       /kty/ 1 : /EC2/ 2,
        /crv/ -1 : /P-256/ 1,
        /x/ -2 : h'd7cc072de2205bdc1537a543d53c60a6acb62eccd890c7fa27c9
                   e354089bbe13',
