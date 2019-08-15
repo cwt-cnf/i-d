@@ -143,7 +143,7 @@
 	  <t hangText="Presenter">
 	    <vspace/>
 	    Party that proves possession of a private key (for asymmetric key cryptography)
-	    or secret key (for symmetric key cryptography) to a recipient.<vspace/>
+	    or secret key (for symmetric key cryptography) to a recipient of a CWT.<vspace/>
 		In context of OAuth this party is also called OAuth Client.
 	  </t>
 
