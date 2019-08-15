@@ -538,9 +538,9 @@
       <t>
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
 	Applications that require
-	the proof-of-possession keys communicated with it
-	to be understood and processed MUST ensure that
-	the parts of this specification that they use are implemented.
+	the proof-of-possession keys in CWTs, using the 'cnf' claim MUST ensure
+	that the parts of this specification that they use are implemented by
+	the intended recipient.
       </t>
       <t>
 	CBOR Web Tokens with proof-of-possession keys are used in context of an architecture,
