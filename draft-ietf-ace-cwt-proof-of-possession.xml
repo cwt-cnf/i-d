@@ -607,7 +607,9 @@
 	and the PoP keys are identified by Key IDs, care must be taken to keep the keys
 	for the different kinds of CWTs segregated so that an attacker cannot
 	cause the wrong PoP key to be used by using a valid Key ID
-	for the wrong kind of CWT.
+	for the wrong kind of CWT. Using audience restrictions for the CWT would
+	be one strategy to mitigate this risk.
+	
       </t>
     </section>
 
