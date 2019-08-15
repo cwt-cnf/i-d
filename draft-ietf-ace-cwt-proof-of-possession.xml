@@ -156,6 +156,10 @@
 
 	</list>
       </t>
+      <t>This specification provides examples in CBOR extended diagnostic
+      notation, which includes linebreaks for readability, as defined in
+      Appendix G of <xref target="RFC8610"/>.
+      </t>
     </section>
 
     <section title='Representations for Proof-of-Possession Keys' anchor="PoP">
@@ -245,8 +249,8 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
-	  in the CWT Claims Set of a CWT:
+	  The following example demonstrates such a declaration in the CWT
+	  Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
@@ -294,8 +298,8 @@
 	  using COSE_Encrypt or COSE_Encrypt0.
 	</t>
 	<t>
-	  The following example (using CBOR diagnostic notation, with linebreaks for readability)
-	  illustrates a symmetric key that could subsequently be encrypted for use in the
+	  The following example illustrates a symmetric key that could
+	  subsequently be encrypted for use in the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
 	<figure>
@@ -313,8 +317,8 @@
 	  is used as the plaintext when encrypting the key.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT (using CBOR diagnostic notation, with
-	  linebreaks for readability) illustrates the use of an encrypted symmetric key as the
+	  The following example CWT Claims Set of a CWT illustrates the use of
+	  an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
 	<figure>
@@ -365,8 +369,8 @@
 	  identifying the key.
 	</t>
 	<t>
-	  The following example (using CBOR diagnostic notation) demonstrates such a declaration
-	  in the CWT Claims Set of a CWT:
+	  The following example demonstrates such a declaration in the CWT
+	  Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
@@ -474,7 +478,7 @@
 	  Section 6 of <xref target="RFC6125">RFC 6125</xref>.
 	</t>
 	<t>
-	  The following example (using JSON notation) demonstrates such a declaration
+	  The following example demonstrates such a declaration
 	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
@@ -871,7 +875,7 @@
     <references title="Informative References">
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml' ?>
       <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7800.xml' ?>
-
+      <?rfc include='http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8610.xml' ?>
       <reference anchor="JWS" target="http://www.rfc-editor.org/info/rfc7515">
         <front>
           <title>JSON Web Signature (JWS)</title>
@@ -992,6 +996,14 @@
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+      <t>-07
+        <list style='symbols'>
+	  <t>
+	    Addressed AD review by Ben Kaduk.
+	  </t>
+        </list>
       </t>
 
       <t>
