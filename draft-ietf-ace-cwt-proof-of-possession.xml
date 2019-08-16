@@ -106,7 +106,31 @@
 	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
 	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="RFC8392"/>
 	rather than JSON <xref target="RFC8259"/> and JWTs <xref target="JWT"/>.
-     </t>
+     </t>>> Section 6
+>>
+>>     ensure correct processing.  The recipient needs to be able to use
+>>     credentials to verify the authenticity, integrity, and potentially
+>>     the confidentiality of the CWT and its content.  This requires the
+>>
+>> Just from a rhetorical point of view, can you help me understand how
+>> credentials would be used to verify the confidentiality of a CWT?  It
+>> seems like this depends on either (or both of) how the CWT is
+>> transmitted or how it is prepared, and I am not sure how the recipient's
+>> credentials come into play.
+>>
+>
+> This text is referring to the issuer's credentials (e.g. the 
+> Authorization Server issuing the CWT), that the recipient needs to 
+> verify the CWT. Do you want us to clarify this sentence?
+
+Note that I was specifically asking about "potentially the
+confidentiality"; I don't understand the intended workflow for verification
+of confidentiality (and thus which credentials are involved).  I don't
+really see how a credential held solely by the issuer could proide
+confidentiality protection when it needs to be understood by some other
+protocol participant.
+
+
     </section>
 
     <section title='Terminology' anchor='Terminology'>
@@ -302,7 +326,31 @@
 	  subsequently be encrypted for use in the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
-	<figure>
+	<figure>>> Section 6
+>>
+>>     ensure correct processing.  The recipient needs to be able to use
+>>     credentials to verify the authenticity, integrity, and potentially
+>>     the confidentiality of the CWT and its content.  This requires the
+>>
+>> Just from a rhetorical point of view, can you help me understand how
+>> credentials would be used to verify the confidentiality of a CWT?  It
+>> seems like this depends on either (or both of) how the CWT is
+>> transmitted or how it is prepared, and I am not sure how the recipient's
+>> credentials come into play.
+>>
+>
+> This text is referring to the issuer's credentials (e.g. the 
+> Authorization Server issuing the CWT), that the recipient needs to 
+> verify the CWT. Do you want us to clarify this sentence?
+
+Note that I was specifically asking about "potentially the
+confidentiality"; I don't understand the intended workflow for verification
+of confidentiality (and thus which credentials are involved).  I don't
+really see how a credential held solely by the issuer could proide
+confidentiality protection when it needs to be understood by some other
+protocol participant.
+
+
 	  <artwork><![CDATA[
   {
    /kty/ 1 : /Symmetric/ 4,
