@@ -512,8 +512,10 @@
 	</t>
 	<t>
 	  Note that another means of proving possession of the key
-	  when it is a symmetric key is to encrypt the key to the recipient.
-	  The means of obtaining a key for the recipient is likewise protocol specific.
+	  exist, which could be used in conjunctions with a CWT's confirmation
+	  key. Applications making use of such alternate means are encouraged
+	  to register them in the CWT Confirmation Methods Registry
+	  <xref target="CnfReg"/>.
 	</t>
       </section>
 
