@@ -736,11 +736,13 @@
               </t>
               <t hangText='Specification Document(s):'>
                 <vspace/>
-                Reference to the document or documents that specify the parameter,
-		preferably including URIs that
-                can be used to retrieve copies of the documents.
-		An indication of the relevant
-                sections may also be included but is not required.
+                Reference to the document or documents that specify the
+		parameter, preferably including URIs that can be used to
+		retrieve copies of the documents. An indication of the relevant
+		sections may also be included but is not required.
+		Note that designated experts and IANA must be provided with
+		a copy of the specification document(s) in order to perform
+		their work.
               </t>
             </list>
           </t>
