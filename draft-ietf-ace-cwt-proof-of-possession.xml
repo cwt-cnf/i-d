@@ -330,7 +330,7 @@
    /exp/ 4 : 1311281970,
    /iat/ 5 : 1311280970,
    /cnf/ 8 : {
-   /COSE_Encrypt0/ 2 : [
+   /Encrypted_COSE_Key/ 2 : [
        /protected header/ h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
        /unprotected header/ { / iv / 5: h'636898994FF0EC7BFCF6D3F95B'},
        /ciphertext/  h'0573318A3573EB983E55A7C2F06CADD0796C9E584F1D0E3E
@@ -511,7 +511,7 @@
 	  as this is also protocol specific.
 	</t>
 	<t>
-	  Note that another means of proving possession of the key
+	  Note that other means of proving possession of the key
 	  exist, which could be used in conjunctions with a CWT's confirmation
 	  key. Applications making use of such alternate means are encouraged
 	  to register them in the CWT Confirmation Methods Registry
