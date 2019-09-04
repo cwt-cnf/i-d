@@ -564,7 +564,9 @@
 	any elements conveyed within the CWT payload.
 	Special care has to be applied when carrying symmetric keys inside the CWT
 	since those not only require integrity protection
-	but also confidentiality protection.
+	but also confidentiality protection (e.g. by either encrypting the cnf element
+	as specified in <xref target="SymmetricPoP"/> or by encrypting the whole CWT as
+	specified in <xref target="RFC8392"/>).
       </t>
       <t>
 	As described in Section 6 (Key Identification) and Appendix D (Notes on Key Selection)
