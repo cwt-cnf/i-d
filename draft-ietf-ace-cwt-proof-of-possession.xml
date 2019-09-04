@@ -587,8 +587,9 @@
       <t>
 	The use of CWTs with proof-of-possession keys requires additional information
 	to be shared between the involved parties in order to ensure correct processing.
-	The recipient needs to be able to use credentials to verify the authenticity,
-	integrity, and potentially the confidentiality of the CWT and its content.
+	The recipient needs to be able to use credentials to verify the authenticity and
+	integrity of the CWT.  Furthermore the recipient may need to be able
+	to decrypt either the whole CWT or encrypted parts thereof (see <xref target="SymmetricPoP"/>).
 	This requires the recipient to know information about the issuer.
 	Likewise, there needs to be agreement between the issuer and the recipient
 	about the claims being used (which is also true of CWTs in general).
