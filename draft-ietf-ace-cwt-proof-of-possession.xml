@@ -641,12 +641,11 @@
 	(using the iesg@ietf.org mailing list) for resolution.
       </t>
       <t>
-	Criteria that should be applied by the Designated Experts include
-	determining whether the proposed registration duplicates existing functionality,
-	determining whether it is likely to be of general applicability
-	or whether it is useful only for a single application, and
-	evaluating the security properties of the item being registered
-	and whether the registration makes sense.
+	Designated Experts should determine whether a registration request contains 
+	enough information for the registry to be populated with the new values and 
+	whether the proposed new functionality already exists. In case of an incomplete 
+	registration and an attempt to register already existing functionality the 
+        Designated Experts should ask for corrections or reject the registration. 
       </t>
       <t>
 	It is suggested that multiple Designated Experts be appointed who are able to
