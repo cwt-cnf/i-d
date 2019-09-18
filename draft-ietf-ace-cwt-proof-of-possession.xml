@@ -330,7 +330,7 @@
    /exp/ 4 : 1311281970,
    /iat/ 5 : 1311280970,
    /cnf/ 8 : {
-   /COSE_Encrypt0/ 2 : [
+   /Encrypted_COSE_Key/ 2 : [
        /protected header/ h'A1010A' /{ \alg\ 1:10 \AES-CCM-16-64-128\}/,
        /unprotected header/ { / iv / 5: h'636898994FF0EC7BFCF6D3F95B'},
        /ciphertext/  h'0573318A3573EB983E55A7C2F06CADD0796C9E584F1D0E3E
@@ -511,9 +511,11 @@
 	  as this is also protocol specific.
 	</t>
 	<t>
-	  Note that another means of proving possession of the key
-	  when it is a symmetric key is to encrypt the key to the recipient.
-	  The means of obtaining a key for the recipient is likewise protocol specific.
+	  Note that other means of proving possession of the key
+	  exist, which could be used in conjunctions with a CWT's confirmation
+	  key. Applications making use of such alternate means are encouraged
+	  to register them in the CWT Confirmation Methods Registry
+	  <xref target="CnfReg"/>.
 	</t>
       </section>
 
@@ -536,10 +538,9 @@
       </t>
       <t>
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
-	Applications that require
-	the proof-of-possession keys in CWTs, using the 'cnf' claim MUST ensure
-	that the parts of this specification that they use are implemented by
-	the intended recipient.
+	Applications that require the use proof-of-possession keys in CWTs,
+	using the 'cnf' claim, MUST ensure that the parts of this specification
+	that they use are implemented by the intended recipient.
       </t>
       <t>
 	CBOR Web Tokens with proof-of-possession keys are used in context of an architecture,
@@ -738,11 +739,13 @@
               </t>
               <t hangText='Specification Document(s):'>
                 <vspace/>
-                Reference to the document or documents that specify the parameter,
-		preferably including URIs that
-                can be used to retrieve copies of the documents.
-		An indication of the relevant
-                sections may also be included but is not required.
+                Reference to the document or documents that specify the
+		parameter, preferably including URIs that can be used to
+		retrieve copies of the documents. An indication of the relevant
+		sections may also be included but is not required.
+		Note that designated experts and IANA must be provided with
+		a copy of the specification document(s) in order to perform
+		their work.
               </t>
             </list>
           </t>
