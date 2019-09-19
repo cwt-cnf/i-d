@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-06"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-07"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -71,7 +71,7 @@
       </address>
     </author>
 
-    <date month="September" year="2019"/>
+    <date day="18" month="September" year="2019"/>
 
     <area>Security</area>
     <workgroup>ACE</workgroup>
@@ -88,7 +88,7 @@
 	Being able to prove possession of a key is also sometimes described as
 	being the holder-of-key.
 	This specification provides equivalent functionality to
-	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" (RFC 7800),
+	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" (RFC 7800)
 	but using CBOR and CWTs rather than JSON and JWTs.
       </t>
     </abstract>
@@ -103,22 +103,22 @@
 	Proof of possession of a key is also sometimes described as
 	being the holder-of-key.
 	This specification provides equivalent functionality to
-	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>,
+	"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <xref target="RFC7800"/>
 	but using CBOR <xref target="RFC7049"/> and CWTs <xref target="RFC8392"/>
 	rather than JSON <xref target="RFC8259"/> and JWTs <xref target="JWT"/>.
      </t>
     </section>
 
     <section title='Terminology' anchor='Terminology'>
-	
-	   <t>
+
+      <t>
          The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
          "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
          "MAY", and "OPTIONAL" in this document are to be interpreted as
          described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
          when, and only when, they appear in all capitals, as shown here.
        </t>
-     
+
       <t>
 	This specification uses terms defined in
 	the CBOR Web Token (CWT) <xref target="RFC8392"/>,
@@ -136,29 +136,31 @@
 
 	  <t hangText="Issuer">
 	    <vspace/>
-		Party that creates the CWT and binds the claims about the subject to the 
-		proof-of-possession key.
+	    Party that creates the CWT and binds the claims about the subject to the
+	    proof-of-possession key.
 	  </t>
 
 	  <t hangText="Presenter">
 	    <vspace/>
 	    Party that proves possession of a private key (for asymmetric key cryptography)
-	    or secret key (for symmetric key cryptography) to a recipient of a CWT.<vspace/>
-		In context of OAuth this party is also called OAuth Client.
+	    or secret key (for symmetric key cryptography) to a recipient of a CWT.
+	    <vspace/>
+	    In the context of OAuth, this party is also called the OAuth Client.
 	  </t>
 
 	  <t hangText="Recipient">
 	    <vspace/>
 	    Party that receives the CWT containing the proof-of-possession key information from the presenter.
-		<vspace/>
-		In context of OAuth this party is also called OAuth Resource Server.
+	    <vspace/>
+	    In the context of OAuth, this party is also called the OAuth Resource Server.
 	  </t>
 
 	</list>
       </t>
-      <t>This specification provides examples in CBOR extended diagnostic
-      notation, which includes linebreaks for readability, as defined in
-      Appendix G of <xref target="RFC8610"/>.
+      <t>
+	This specification provides examples in CBOR extended diagnostic
+	notation, as defined in Appendix G of <xref target="RFC8610"/>.
+	The examples include line breaks for readability.
       </t>
     </section>
 
@@ -214,16 +216,16 @@
 	  representations.
 	</t>
 	<t>
-		The <spanx style="verb">cnf</spanx> claim value MUST represent only a single 
-		proof-of-possession key. At most one of the <spanx style="verb">COSE_Key</spanx> 
-		and <spanx style="verb">Encrypted_COSE_Key</spanx> confirmation values defined 
-		in <xref target="fig:cborMappings"/> may be present. Note that if an application 
-		needs to represent multiple proof-of-possession keys in the same CWT, one way 
-		for it to achieve this is to use other claim names, in addition to 
-		<spanx style="verb">cnf</spanx>, to hold the additional proof-of-possession 
-		key information. These claims could use the same syntax and semantics as the 
-		<spanx style="verb">cnf</spanx> claim. Those claims would be defined by 
-		applications or other specifications and could be registered in the 
+		The <spanx style="verb">cnf</spanx> claim value MUST represent only a single
+		proof-of-possession key. At most one of the <spanx style="verb">COSE_Key</spanx>
+		and <spanx style="verb">Encrypted_COSE_Key</spanx> confirmation values defined
+		in <xref target="fig:cborMappings"/> may be present. Note that if an application
+		needs to represent multiple proof-of-possession keys in the same CWT, one way
+		for it to achieve this is to use other claim names, in addition to
+		<spanx style="verb">cnf</spanx>, to hold the additional proof-of-possession
+		key information. These claims could use the same syntax and semantics as the
+		<spanx style="verb">cnf</spanx> claim. Those claims would be defined by
+		applications or other specifications and could be registered in the
 		IANA "CBOR Web Token Claims" registry <xref target="IANA.CWT.Claims"/>.
 	</t>
 	<t>
@@ -249,8 +251,8 @@
 	  the <spanx style="verb">COSE_Key</spanx> member
 	  is a COSE_Key <xref target="RFC8152"/>
 	  representing the corresponding asymmetric public key.
-	  The following example demonstrates such a declaration in the CWT
-	  Claims Set of a CWT:
+	  The following example demonstrates such a declaration
+	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
@@ -298,8 +300,8 @@
 	  using COSE_Encrypt or COSE_Encrypt0.
 	</t>
 	<t>
-	  The following example illustrates a symmetric key that could
-	  subsequently be encrypted for use in the
+	  The following example
+	  illustrates a symmetric key that could subsequently be encrypted for use in the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member:
 	</t>
 	<figure>
@@ -317,8 +319,8 @@
 	  is used as the plaintext when encrypting the key.
 	</t>
 	<t>
-	  The following example CWT Claims Set of a CWT illustrates the use of
-	  an encrypted symmetric key as the
+	  The following example CWT Claims Set of a CWT
+	  illustrates the use of an encrypted symmetric key as the
 	  <spanx style="verb">Encrypted_COSE_Key</spanx> member value:
 	</t>
 	<figure>
@@ -355,7 +357,7 @@
       <section title="Representation of a Key ID for a Proof-of-Possession Key" anchor="KidPoP">
 
 	<t>
-	  The proof-of-possession key can also be identified by the use of
+	  The proof-of-possession key can also be identified using
 	  a Key ID instead of communicating the actual key,
 	  provided the recipient is able to obtain the identified key
 	  using the Key ID.
@@ -369,8 +371,8 @@
 	  identifying the key.
 	</t>
 	<t>
-	  The following example demonstrates such a declaration in the CWT
-	  Claims Set of a CWT:
+	  The following example demonstrates such a declaration
+	  in the CWT Claims Set of a CWT:
 	</t>
 	<figure>
 	  <artwork><![CDATA[
@@ -390,12 +392,12 @@
 	  value as the <spanx style="verb">kid</spanx> value.
 	</t>
 	<t>
-	  Note that the use of a Key ID to identify a proof-of-possesion key needs to be carefully circumscribed,
+	  Note that the use of a Key ID to identify a proof-of-possession key needs to be carefully circumscribed,
 	  as described below and in <xref target="Operational"/>.
 	  In cases where the Key ID is not a cryptographic value derived from the key
 	  or where not all of the parties involved are validating the cryptographic derivation,
 	  implementers should expect collisions, where different keys are assigned the same Key ID.
-	  Recipients of a CWT with a pop-key linked through only a Key ID should be prepared to handle
+	  Recipients of a CWT with a PoP key linked through only a Key ID should be prepared to handle
 	  such situations.
 	</t>
 	<t>
@@ -454,9 +456,8 @@
 	  a value determined by the recipient using the key possessed by the presenter.
 	  This value is sometimes called a "nonce" or a "challenge".
           There are, however, also other means to demonstrate freshness of the exchange
-	  and to link a proof of possession protocol run to the participating parties, 
-	  as demonstrated by various authentication and key exchange protocols. 
-
+	  and to link the proof-of-possession key to the participating parties,
+	  as demonstrated by various authentication and key exchange protocols.
 	</t>
 	<t>
 	  The means of communicating the nonce and the nature of its contents
@@ -467,10 +468,10 @@
 	</t>
 	<t>
 	  Note that other means of proving possession of the key
-	  exist, which could be used in conjunctions with a CWT's confirmation
-	  key. Applications making use of such alternate means are encouraged
-	  to register them in the CWT Confirmation Methods Registry
-	  <xref target="CnfReg"/>.
+	  exist, which could be used in conjunction with a CWT's confirmation key.
+	  Applications making use of such alternate means are encouraged
+	  to register them in the IANA "CWT Confirmation Methods" registry
+	  established in <xref target="CnfReg"/>.
 	</t>
       </section>
 
@@ -478,7 +479,7 @@
 
     <section anchor="Security" title="Security Considerations">
       <t>
-        All of the security considerations that
+        All the security considerations that
         are discussed in <xref target="RFC8392"/> also apply here.
         In addition, proof of possession introduces its own unique security issues.
 	Possessing a key is only valuable if it is kept secret.
@@ -493,8 +494,8 @@
       </t>
       <t>
 	A recipient might not understand the <spanx style="verb">cnf</spanx> claim.
-	Applications that require the use proof-of-possession keys in CWTs,
-	using the 'cnf' claim, MUST ensure that the parts of this specification
+	Applications that use proof-of-possession keys in CWTs with the <spanx style="verb">cnf</spanx> claim
+	MUST ensure that the parts of this specification
 	that they use are implemented by the intended recipient.
       </t>
       <t>
@@ -503,9 +504,9 @@
 	in which protocols are used by a presenter to request these tokens
 	and to subsequently use them with recipients.
 	Proof of possession only provides the intended security gains when the
-	proof is known to be current and not subject to replay attacks; security
-	protocols using mechanisms such as nonces and timestamps can be used to
-	avoid this risk of replay when performing a proof-of-possession for a token.
+	proof is known to be current and not subject to replay attacks;
+	security protocols using mechanisms such as nonces and timestamps can be used to
+	avoid the risk of replay when performing proof of possession for a token.
 	Note that a discussion of the architecture or specific protocols that
 	CWT proof-of-possession tokens are used with is beyond the scope of this specification.
       </t>
@@ -520,9 +521,10 @@
 	any elements conveyed within the CWT payload.
 	Special care has to be applied when carrying symmetric keys inside the CWT
 	since those not only require integrity protection
-	but also confidentiality protection (e.g. by either encrypting the cnf element
-	as specified in <xref target="SymmetricPoP"/> or by encrypting the whole CWT as
-	specified in <xref target="RFC8392"/>).
+	but also confidentiality protection
+	(e.g., either by encrypting the <spanx style="verb">cnf</spanx> element,
+	as specified in <xref target="SymmetricPoP"/>,
+	or by encrypting the whole CWT, as specified in <xref target="RFC8392"/>).
       </t>
       <t>
 	As described in Section 6 (Key Identification) and Appendix D (Notes on Key Selection)
@@ -535,7 +537,7 @@
     <section anchor="Privacy" title="Privacy Considerations">
       <t>
 	A proof-of-possession key can be used as a correlation handle if the same key
-	is used on multiple occasions. 
+	is used on multiple occasions.
 	Thus, for privacy reasons, it is recommended that different proof-of-possession keys
 	be used when interacting with different parties.
       </t>
@@ -546,28 +548,28 @@
 	The use of CWTs with proof-of-possession keys requires additional information
 	to be shared between the involved parties in order to ensure correct processing.
 	The recipient needs to be able to use credentials to verify the authenticity and
-	integrity of the CWT.  Furthermore the recipient may need to be able
-	to decrypt either the whole CWT or encrypted parts thereof (see <xref target="SymmetricPoP"/>).
+	integrity of the CWT.  Furthermore, the recipient may need to be able to decrypt
+	either the whole CWT or the encrypted parts thereof (see <xref target="SymmetricPoP"/>).
 	This requires the recipient to know information about the issuer.
 	Likewise, there needs to be agreement between the issuer and the recipient
 	about the claims being used (which is also true of CWTs in general).
       </t>
       <t>
 	When an issuer creates a CWT containing a Key ID claim, it needs to make sure that
-	it does not issue another CWT with different claims containing the same Key ID,
+	it does not issue another CWT with different claims containing the same Key ID
 	within the lifetime of the CWTs, unless intentionally desired.
 	Failure to do so may allow one party to impersonate another party,
 	with the potential to gain additional privileges.
-	Cases where such a re-use of a Key ID would be intentional are when a presenter obtains
-	a CWT with different claims (e.g. extended scope) for the same recipient, but wants to
-	continue using an existing security association (e.g. a DTLS session) bound to the key
-	identified by said Key ID.
+	A case where such reuse of a Key ID would be intentional is when a presenter obtains
+	a CWT with different claims (e.g., extended scope) for the same recipient, but wants to
+	continue using an existing security association (e.g., a DTLS session) bound to the key
+	identified by the Key ID.
 	Likewise, if PoP keys are used for multiple different kinds of CWTs in an application
 	and the PoP keys are identified by Key IDs, care must be taken to keep the keys
 	for the different kinds of CWTs segregated so that an attacker cannot
 	cause the wrong PoP key to be used by using a valid Key ID
-	for the wrong kind of CWT. Using audience restrictions for the CWT would
-	be one strategy to mitigate this risk.	
+	for the wrong kind of CWT.
+	Using an audience restriction for the CWT would be one strategy to mitigate this risk.
       </t>
     </section>
 
@@ -596,11 +598,12 @@
 	(using the iesg@ietf.org mailing list) for resolution.
       </t>
       <t>
-	Designated Experts should determine whether a registration request contains 
-	enough information for the registry to be populated with the new values and 
-	whether the proposed new functionality already exists. In case of an incomplete 
-	registration and an attempt to register already existing functionality the 
-        Designated Experts should ask for corrections or reject the registration. 
+	Designated Experts should determine whether a registration request contains
+	enough information for the registry to be populated with the new values and
+	whether the proposed new functionality already exists.
+	In the case of an incomplete registration
+	or an attempt to register already existing functionality,
+	the Designated Experts should ask for corrections or reject the registration.
       </t>
       <t>
 	It is suggested that multiple Designated Experts be appointed who are able to
@@ -693,13 +696,13 @@
               </t>
               <t hangText='Specification Document(s):'>
                 <vspace/>
-                Reference to the document or documents that specify the
-		parameter, preferably including URIs that can be used to
-		retrieve copies of the documents. An indication of the relevant
+                Reference to the document or documents that specify the parameter,
+		preferably including URIs that
+		can be used to retrieve copies of the documents.
+		An indication of the relevant
 		sections may also be included but is not required.
-		Note that designated experts and IANA must be provided with
-		a copy of the specification document(s) in order to perform
-		their work.
+		Note that the Designated Experts and IANA must be able to obtain
+		copies of the specification document(s) to perform their work.
               </t>
             </list>
           </t>
@@ -950,11 +953,12 @@
       <t>
 	Thanks to the following people for their reviews of the specification:
         Roman Danyliw,
+	Benjamin Kaduk,
 	Michael Richardson,
         and
 	Jim Schaad.
       </t>
-      <t>Ludwig Seitz and Goeran Selander worked on this document as part of
+      <t>Ludwig Seitz and Göran Selander worked on this document as part of
     the CelticPlus project CyberWI, with funding from Vinnova.</t>
     </section>
 
@@ -966,7 +970,7 @@
       <t>-07
         <list style='symbols'>
 	  <t>
-	    Addressed AD review by Ben Kaduk.
+	    Addressed Area Director review by Benjamin Kaduk.
 	  </t>
         </list>
       </t>
@@ -1005,13 +1009,13 @@
 	    Addressed review comments by Jim Schaad, see https://www.ietf.org/mail-archive/web/ace/current/msg02798.html
 	  </t>
 	  <t>
-	    Removed unnecessary sentence in the introduction regarding the use any strings that could be case-sensitive. 
+	    Removed unnecessary sentence in the introduction regarding the use any strings that could be case-sensitive.
 	  </t>
 	  <t>
-	  Clarified the terms Presenter and Recipient. 
+	  Clarified the terms Presenter and Recipient.
 	  </t>
 	  <t>
-	  Clarified text about the confirmation claim. 
+	  Clarified text about the confirmation claim.
 	  </t>
 	</list>
       </t>
