@@ -406,6 +406,12 @@
 	  there is frequently a restriction on the size of Key IDs,
 	  either because of table constraints or a desire to keep message sizes small.
 	</t>
+	<t>Note that the value of a Key ID for a specific key is not
+	necessarily the same for different parties. When sending a COSE
+	encrypted message with a shared key, the Key ID may be different on
+	both sides of the conversation,	with the appropriate one being included
+	in the message based on the recipient of the message.
+	</t>
       </section>
 
 <!--
