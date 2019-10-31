@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-09"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-10"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -71,7 +71,7 @@
       </address>
     </author>
 
-    <date day="18" month="October" year="2019"/>
+    <date day="30" month="October" year="2019"/>
 
     <area>Security</area>
     <workgroup>ACE</workgroup>
@@ -185,10 +185,10 @@
 	the CWT <spanx style="verb">sub</spanx> (subject) claim <xref target="RFC8392"/>,
 	to identify the presenter.
 	Other applications may use
-	the <spanx style="verb">iss</spanx> claim
+	the <spanx style="verb">iss</spanx> (issuer) claim <xref target="RFC8392"/>
 	to identify the presenter.
 	In some applications, the subject identifier might be relative to
-	the issuer identified by the <spanx style="verb">iss</spanx> (issuer) claim <xref target="RFC8392"/>.
+	the issuer identified by the <spanx style="verb">iss</spanx> claim.
 	The actual mechanism used is dependent upon the application.
 	The case in which the presenter is the subject of the CWT is analogous to
 	Security Assertion Markup Language (SAML) 2.0 <xref target="OASIS.saml-core-2.0-os"/> SubjectConfirmation usage.
@@ -314,7 +314,7 @@
 	  <artwork><![CDATA[
   {
    /kty/ 1 : /Symmetric/ 4,
-   /alg/ 3 : /HMAC256//256/ 5,
+   /alg/ 3 : /HMAC 256-256/ 5,
    /k/ -1 : h'6684523ab17337f173500e5728c628547cb37df
               e68449c65f885d1b73b49eae1'
   }
@@ -961,8 +961,11 @@
         Roman Danyliw,
 	Christer Holmberg,
 	Benjamin Kaduk,
+	Mirja Kühlewind,
 	Yoav Nir,
 	Michael Richardson,
+	Adam Roach,
+	Éric Vyncke,
         and
 	Jim Schaad.
       </t>
@@ -973,6 +976,14 @@
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+      <t>-10
+        <list style='symbols'>
+	  <t>
+	    Addressed IESG review comments by Adam Roach and Éric Vyncke.
+	  </t>
+        </list>
       </t>
 
       <t>-09
