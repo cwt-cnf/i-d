@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-10"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-11"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -71,7 +71,7 @@
       </address>
     </author>
 
-    <date day="30" month="October" year="2019"/>
+    <date day="31" month="October" year="2019"/>
 
     <area>Security</area>
     <workgroup>ACE</workgroup>
@@ -599,8 +599,8 @@
 	an appropriate subject
 	(e.g., "Request to Register CWT Confirmation Method: example").
 	Registration requests that are undetermined for
-	a period longer than 21 days can be brought to the IESG's attention
-	(using the iesg@ietf.org mailing list) for resolution.
+	a period longer than 21 days can be brought directly to IANA's attention
+	(using the iana@iana.org mailing list) for resolution.
       </t>
       <t>
 	Designated Experts should determine whether a registration request contains
@@ -976,6 +976,14 @@
     <section title="Document History" anchor="History">
       <t>
 	[[ to be removed by the RFC Editor before publication as an RFC ]]
+      </t>
+
+      <t>-11
+        <list style='symbols'>
+	  <t>
+	    Addressed remaining IESG review comment by Mirja Kühlewind.
+	  </t>
+        </list>
       </t>
 
       <t>-10
