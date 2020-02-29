@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-11"
+<rfc category="std" docName="draft-ietf-ace-cwt-proof-of-possession-12"
      ipr="trust200902">
   <front>
     <title abbrev="Proof-of-Possession Key for CWTs">Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)</title>
@@ -27,15 +27,15 @@
     </author>
 
     <author initials="L." surname="Seitz" fullname="Ludwig Seitz">
-      <organization>RISE SICS</organization>
+      <organization>Combitech</organization>
       <address>
 	<postal>
-	  <street>Scheelevaegen 17</street>
-	  <city>Lund</city>
-	  <code>223 70</code>
+	  <street>Djaeknegatan 31</street>
+	  <city>Malmö</city>
+	  <code>211 35</code>
 	  <country>Sweden</country>
 	</postal>
-	<email>ludwig@ri.se</email>
+	<email>ludwig.seitz@combitech.se</email>
       </address>
     </author>
 
